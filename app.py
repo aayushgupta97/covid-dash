@@ -2,7 +2,7 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 import plotly.graph_objects as go
-from src.plots import get_line_plot_data, get_bar_plot
+from src.plots import get_line_plot_data, get_bar_plot, get_gender_plot
 
 app = dash.Dash()
 
@@ -24,7 +24,18 @@ app.layout = html.Div([
                         "layout": {"title": "Histogram"}
                     })
     ],
-    style={"width": "40%", "float": "right"})
+    style={"width": "40%", "float": "left"}),
+
+    html.Div([
+        dcc.Graph("my-pie-graph",
+            figure={
+                "data": get_gender_plot(),
+                "layout":{"title":"Gender"}
+            }
+            )
+            ],
+            style={"width": "60%", "float": "right"})
+
 
 
 

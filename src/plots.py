@@ -25,7 +25,11 @@ def get_line_plot_data():
 
 
 def get_gender_plot():
-    pass
+    r = requests.get("https://api.covid19india.org/raw_data1.json").json()
+    gender = pd.DataFrame(r['raw_data'])['gender']
+    values = [gender.value_counts()['M'], gender.value_counts()['F']]
+    data = [go.Pie(labels=["Male", "Female"] , values=values)]
+    return data
 
 
 def get_age_hist():
