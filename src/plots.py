@@ -22,3 +22,23 @@ def get_line_plot_data():
 
     line_plot_data = [trace1, trace2, trace3]
     return line_plot_data
+
+
+def get_gender_plot():
+    pass
+
+
+def get_age_hist():
+    pass
+
+
+def quick_plot():
+    pass
+
+
+def get_bar_plot():
+    pass
+
+
+
+

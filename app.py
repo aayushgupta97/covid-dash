@@ -2,7 +2,7 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 import plotly.graph_objects as go
-from src.lineplot import get_line_plot_data
+from src.plots import get_line_plot_data
 
 app = dash.Dash()
 
@@ -19,6 +19,10 @@ app.layout = html.Div([
 
 
 ])
+
+
+#### Callback Functions
+
 
 if __name__=="__main__":
     app.run_server()
