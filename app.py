@@ -34,7 +34,7 @@ app.layout = html.Div([
             }
             )
             ],
-            style={"width": "60%", "float": "right"})
+            style={"width": "30%", "float": "right"})
 
 
 

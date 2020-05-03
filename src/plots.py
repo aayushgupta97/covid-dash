@@ -2,21 +2,23 @@ import requests
 import pandas as pd
 import plotly.graph_objects as go
 
+INDEX_MARCH_1 = 31
+
+
 ### Getting data for api.covid API and making dataframe
 def get_line_plot_data():
-    r = requests.get("https://api.covid19india.org/data.json").json()
-    df = pd.DataFrame(r['cases_time_series'])
-    trace1 = go.Scatter(x=df['date'][31:],
-                    y=df['totalconfirmed'][31:],
+    df = pd.read_csv("./data/covid_national_timeseries.csv")
+    trace1 = go.Scatter(x=df['date'][INDEX_MARCH_1:],
+                    y=df['totalconfirmed'][INDEX_MARCH_1:],
                     mode="lines",
                     name="Confirmed")
-    trace2 = go.Scatter(x=df['date'][31:],
-                    y=df['totaldeceased'][31:],
+    trace2 = go.Scatter(x=df['date'][INDEX_MARCH_1:],
+                    y=df['totaldeceased'][INDEX_MARCH_1:],
                     mode="lines",
                     name="Deceased")
 
-    trace3 = go.Scatter(x=df['date'][31:],
-                    y=df['totalrecovered'][31:],
+    trace3 = go.Scatter(x=df['date'][INDEX_MARCH_1:],
+                    y=df['totalrecovered'][INDEX_MARCH_1:],
                     mode="lines",
                     name="Recovered")
 
@@ -42,7 +44,7 @@ def quick_plot():
 def get_bar_plot():
     r = requests.get("https://api.covid19india.org/data.json").json()
     df = pd.DataFrame(r['cases_time_series'])    
-    data = [go.Bar(x=df['date'][31:],y=df['dailyconfirmed'][31:])]
+    data = [go.Bar(x=df['date'][INDEX_MARCH_1:],y=df['dailyconfirmed'][INDEX_MARCH_1:])]
     return data
 
 
