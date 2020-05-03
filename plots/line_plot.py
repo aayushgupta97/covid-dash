@@ -23,7 +23,6 @@ trace3 = go.Scatter(x=df['date'][31:],
                 name="Recovered")
 
 data = [trace1, trace2, trace3]
-labels = ['Iris-setosa', 'Iris-versicolor', 'Iris-virginica']
 
 layout = go.Layout(title="total cases", hovermode="closest")
 fig = go.Figure(data=data, layout=layout)
