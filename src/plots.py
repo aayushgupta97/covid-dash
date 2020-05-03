@@ -31,13 +31,16 @@ def get_gender_plot():
 def get_age_hist():
     pass
 
-
 def quick_plot():
     pass
 
 
 def get_bar_plot():
-    pass
+    r = requests.get("https://api.covid19india.org/data.json").json()
+    df = pd.DataFrame(r['cases_time_series'])    
+    data = [go.Bar(x=df['date'][31:],y=df['dailyconfirmed'][31:])]
+    return data
+
 
 
 

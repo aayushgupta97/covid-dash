@@ -2,7 +2,7 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 import plotly.graph_objects as go
-from src.plots import get_line_plot_data
+from src.plots import get_line_plot_data, get_bar_plot
 
 app = dash.Dash()
 
@@ -15,7 +15,17 @@ app.layout = html.Div([
                         "layout": go.Layout(title="Total Cases", hovermode="closest")
                     })
     ],
-    style={"width": "40%", "align": "left"})
+    style={"width": "40%", "align": "left"}),
+
+    html.Div([
+        dcc.Graph(id="my-bar-plot",
+                    figure={
+                        "data": get_bar_plot(),
+                        "layout": {"title": "Histogram"}
+                    })
+    ],
+    style={"width": "40%", "float": "right"})
+
 
 
 ])
