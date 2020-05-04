@@ -12,44 +12,49 @@ app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 national_timeseries = pd.read_csv("./data/covid_national_timeseries.csv")
 gender_age_data = pd.read_csv("data/covid_raw_gender_age_full.csv")
 
-app.layout = dbc.Container([
-dbc.Row([
-    dbc.Col(html.Div([
+
+
+# Defining Plots
+line_plot_total_cases = html.Div([
         dcc.Graph(id="my-line-plot",
                     figure={
                         "data": get_line_plot_data(national_timeseries),
                         "layout": {"title": "Total Cases"}
                     })
     ])
-    ),
-    dbc.Col(html.Div([
+
+bar_every_day_case = html.Div([
         dcc.Graph(id="my-bar-plot",
                     figure={
                         "data": get_bar_plot(national_timeseries),
                         "layout": {"title": "Histogram"}
                     })
     ])
-    )
-]),
 
-dbc.Row([
-    dbc.Col(html.Div([
+histogram_age_distribution = html.Div([
         dcc.Graph(id="my-histogram",
             figure={
                 "data": get_age_hist(gender_age_data),
                 "layout": {"title": "Age"}
             })
     ])
-    ),
 
-    dbc.Col(html.Div([
+pie_gender = html.Div([
         dcc.Graph("my-pie-graph",
             figure={
                 "data": get_gender_plot(gender_age_data),
                 "layout":{"title":"Gender"}
             })
             ])
-            )
+
+app.layout = dbc.Container([
+dbc.Row([
+    dbc.Col(line_plot_total_cases),
+    dbc.Col(bar_every_day_case)
+]),
+dbc.Row([
+    dbc.Col(histogram_age_distribution),
+    dbc.Col(pie_gender)
 ])
 ])   
 
