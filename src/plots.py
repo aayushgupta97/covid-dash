@@ -25,16 +25,19 @@ def get_line_plot_data(df):
     return line_plot_data
 
 
-def get_gender_plot():
-    r = requests.get("https://api.covid19india.org/raw_data1.json").json()
-    gender = pd.DataFrame(r['raw_data'])['gender']
+def get_gender_plot(df):
+    gender = df['gender']
     values = [gender.value_counts()['M'], gender.value_counts()['F']]
     data = [go.Pie(labels=["Male", "Female"] , values=values)]
     return data
 
 
-def get_age_hist():
-    pass
+def get_age_hist(df):
+    age = df['age'].apply(lambda x: x if bool(x) else np.nan)
+    age.dropna(inplace=True)
+    data = [go.Histogram(x=age, nbinsx=20)]
+    return data
+
 
 def quick_plot():
     pass
