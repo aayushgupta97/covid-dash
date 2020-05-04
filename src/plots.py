@@ -6,8 +6,7 @@ INDEX_MARCH_1 = 31
 
 
 ### Getting data for api.covid API and making dataframe
-def get_line_plot_data():
-    df = pd.read_csv("./data/covid_national_timeseries.csv")
+def get_line_plot_data(df):
     trace1 = go.Scatter(x=df['date'][INDEX_MARCH_1:],
                     y=df['totalconfirmed'][INDEX_MARCH_1:],
                     mode="lines",
@@ -41,9 +40,7 @@ def quick_plot():
     pass
 
 
-def get_bar_plot():
-    r = requests.get("https://api.covid19india.org/data.json").json()
-    df = pd.DataFrame(r['cases_time_series'])    
+def get_bar_plot(df):    
     data = [go.Bar(x=df['date'][INDEX_MARCH_1:],y=df['dailyconfirmed'][INDEX_MARCH_1:])]
     return data
 
