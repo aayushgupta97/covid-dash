@@ -3,6 +3,9 @@ import pandas as pd
 import plotly.graph_objects as go
 
 INDEX_MARCH_1 = 31
+"""
+Each Function returns a data list, containing the traces used in plots.
+"""
 
 
 ### Getting data for api.covid API and making dataframe
@@ -46,8 +49,4 @@ def quick_plot():
 def get_bar_plot(df):    
     data = [go.Bar(x=df['date'][INDEX_MARCH_1:],y=df['dailyconfirmed'][INDEX_MARCH_1:])]
     return data
-
-
-
-
 
