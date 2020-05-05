@@ -50,3 +50,10 @@ def get_bar_plot(df):
     data = [go.Bar(x=df['date'][INDEX_MARCH_1:],y=df['dailyconfirmed'][INDEX_MARCH_1:])]
     return data
 
+
+def get_subplot(confirmed, deceased, recovered):
+    trace1 = go.Bar(x=confirmed['date'], y=confirmed['dl'], name="confirmed")
+    trace2 = go.Bar(x=deceased['date'], y=deceased['dl'], name="deceased")
+    trace3 = go.Bar(x=recovered['date'], y=recovered['dl'], name="recovered")
+
+    return trace1, trace2, trace3
