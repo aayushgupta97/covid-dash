@@ -53,22 +53,12 @@ pie_gender = html.Div([
             ])
 
 
-statewise_total_table = dbc.Table.from_dataframe(sort_dataframe_desc_on_int_column("confirmed", get_dataframe_with_columns(["active", "confirmed", "deaths", "state"], statewise_total_cases)), striped=True, bordered=True, hover=True)
+statewise_total_table = html.Div(dbc.Table.from_dataframe(sort_dataframe_desc_on_int_column("confirmed", get_dataframe_with_columns(["active", "confirmed", "deaths", "state"], statewise_total_cases)), striped=True, bordered=True, hover=True))
 
 fig = make_subplots(rows=3, cols=1, shared_xaxes=True)
-confirmed, deceased, recovered = get_subplot(confirmed_daily, deceased_daily, recovered_daily)
-fig.append_trace(confirmed, row=1, col=1)
-
-fig.append_trace(deceased, row=2, col=1)
-
-fig.append_trace(recovered, row=3, col=1)
-fig.update_layout(height=600, title_text="Statewise Statistics")
-
-
-
 
 statewise_subplots = html.Div([
-    dcc.Dropdown(
+    dbc.Col(dcc.Dropdown(
         id='demo-dropdown',
         options=[
             {'label': 'Maharashtra', 'value': 'mh'},
@@ -76,8 +66,8 @@ statewise_subplots = html.Div([
             {'label': 'Rajasthan', 'value': 'rj'}
         ],
         value='dl'
-    ),
-    dcc.Graph(figure=fig)
+    )),
+    dcc.Graph(id = "statewise_subplot", figure=fig)
 ])
 
 
@@ -98,6 +88,20 @@ dbc.Row([
 ])   
 
 #### Callback Functions
+@app.callback(Output("statewise_subplot", "figure"),
+            [Input("demo-dropdown", "value")])
+def update_subplot(column_name):
+    fig = make_subplots(rows=3, cols=1, shared_xaxes=True)
+
+    confirmed, deceased, recovered = get_subplot(column_name,confirmed_daily, deceased_daily, recovered_daily)
+    fig.append_trace(confirmed, row=1, col=1)
+
+    fig.append_trace(deceased, row=2, col=1)
+
+    fig.append_trace(recovered, row=3, col=1)
+    fig.update_layout(height=600, title_text="Statewise Statistics")
+
+    return fig
 
 if __name__=="__main__":
     app.run_server()

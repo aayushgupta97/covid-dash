@@ -51,9 +51,9 @@ def get_bar_plot(df):
     return data
 
 
-def get_subplot(confirmed, deceased, recovered):
-    trace1 = go.Bar(x=confirmed['date'], y=confirmed['dl'], name="confirmed")
-    trace2 = go.Bar(x=deceased['date'], y=deceased['dl'], name="deceased")
-    trace3 = go.Bar(x=recovered['date'], y=recovered['dl'], name="recovered")
+def get_subplot(column_name, confirmed, deceased, recovered):
+    trace1 = go.Bar(x=confirmed['date'], y=confirmed[column_name], name="confirmed")
+    trace2 = go.Bar(x=deceased['date'], y=deceased[column_name], name="deceased")
+    trace3 = go.Bar(x=recovered['date'], y=recovered[column_name], name="recovered")
 
     return trace1, trace2, trace3
