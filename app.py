@@ -2,7 +2,7 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 import plotly.graph_objects as go
-from src.plots import get_line_plot_data, get_bar_plot, get_gender_plot, get_age_hist, get_subplot
+from src.plots import get_line_plot_data, get_bar_plot, get_gender_plot, get_age_hist, get_daily_subplot, get_cm_subplot
 from src.utils import *
 import pandas as pd
 import dash_bootstrap_components as dbc
@@ -16,8 +16,12 @@ national_timeseries = pd.read_csv("./data/covid_national_timeseries.csv")
 gender_age_data = pd.read_csv("data/covid_raw_gender_age_full.csv")
 statewise_total_cases = pd.read_csv("data/covid_statewise_total_cases.csv")
 confirmed_daily = pd.read_csv("data/daily/confirmed.csv")
+confirmed_cm = pd.read_csv("data/cumulative/confirmed.csv")
 deceased_daily = pd.read_csv("data/daily/deceased.csv")
+deceased_cm = pd.read_csv("data/cumulative/deceased.csv")
 recovered_daily = pd.read_csv("data/daily/recovered.csv")
+recovered_cm = pd.read_csv("data/cumulative/recovered.csv")
+
 
 # Defining Plots
 line_plot_total_cases = html.Div([
@@ -58,7 +62,7 @@ statewise_total_table = html.Div(dbc.Table.from_dataframe(sort_dataframe_desc_on
 fig = make_subplots(rows=3, cols=1, shared_xaxes=True)
 
 statewise_subplots = html.Div([
-    dbc.Col(dcc.Dropdown(
+    dbc.Col([dcc.Dropdown(
         id='demo-dropdown',
         options=[
             {'label': 'Maharashtra', 'value': 'mh'},
@@ -66,7 +70,17 @@ statewise_subplots = html.Div([
             {'label': 'Rajasthan', 'value': 'rj'}
         ],
         value='dl'
-    )),
+    ),     
+    dcc.Dropdown(
+        id="type-dropdown",
+        options=[
+            {"label": "Daily", "value":"daily"},
+            {"label": "Cumulative", "value": "cm"}
+        ],
+        value='daily'
+    )
+    ], 
+    ),
     dcc.Graph(id = "statewise_subplot", figure=fig)
 ])
 
@@ -89,17 +103,22 @@ dbc.Row([
 
 #### Callback Functions
 @app.callback(Output("statewise_subplot", "figure"),
-            [Input("demo-dropdown", "value")])
-def update_subplot(column_name):
+            [Input("demo-dropdown", "value"),
+            Input("type-dropdown", "value")])
+def update_subplot(column_name, plot_type):
     fig = make_subplots(rows=3, cols=1, shared_xaxes=True)
-
-    confirmed, deceased, recovered = get_subplot(column_name,confirmed_daily, deceased_daily, recovered_daily)
+    if plot_type == "cm":
+        confirmed, deceased, recovered = get_cm_subplot(column_name, confirmed_cm, deceased_cm, recovered_cm)
+    else:
+        confirmed, deceased, recovered = get_daily_subplot(column_name,confirmed_daily, deceased_daily, recovered_daily)
     fig.append_trace(confirmed, row=1, col=1)
 
     fig.append_trace(deceased, row=2, col=1)
 
     fig.append_trace(recovered, row=3, col=1)
     fig.update_layout(height=600, title_text="Statewise Statistics")
+    changed_id = [p['prop_id'] for p in dash.callback_context.triggered][0]
+    print(changed_id)
 
     return fig
 
