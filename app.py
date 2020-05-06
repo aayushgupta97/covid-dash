@@ -61,6 +61,22 @@ statewise_total_table = html.Div(dbc.Table.from_dataframe(sort_dataframe_desc_on
 
 fig = make_subplots(rows=3, cols=1, shared_xaxes=True)
 
+
+navbar = dbc.NavbarSimple(id="navbar",
+            children=[
+                dbc.NavItem(dbc.NavLink("India", href="#")),
+                dbc.NavItem(dbc.NavLink("World", href="#")),
+            ],
+            brand= "Covid-Dash",
+            brand_href="#",
+            color="primary",
+            dark="True",
+            sticky="top"
+            )
+
+
+
+
 statewise_subplots = html.Div([
     dbc.Col([dcc.Dropdown(
         id='demo-dropdown',
@@ -86,7 +102,7 @@ statewise_subplots = html.Div([
 
 
 
-app.layout = dbc.Container([
+app.layout = html.Div([navbar,dbc.Container([
 dbc.Row([
     dbc.Col(line_plot_total_cases),
     dbc.Col(bar_every_day_case)
@@ -100,7 +116,7 @@ dbc.Row([
     dbc.Col(statewise_subplots)
 ])
 ])   
-
+])
 #### Callback Functions
 @app.callback(Output("statewise_subplot", "figure"),
             [Input("demo-dropdown", "value"),
