@@ -58,7 +58,7 @@ def daily_statewise_and_cumulative_csv():
     
 
 if __name__=="__main__":
-    # make_national_timeseries_data_csv()
-    # make_raw_gender_age_data_csv()
-    # statewise_total_cases_csv()
+    make_national_timeseries_data_csv()
+    make_raw_gender_age_data_csv()
+    statewise_total_cases_csv()
     daily_statewise_and_cumulative_csv()
