@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 
 
 from app import app
-from layouts import layout_india, layout2
+from layouts import layout_india, layout_world
 import callbacks
 
 navbar = dbc.NavbarSimple(id="navbar",
@@ -34,7 +34,7 @@ def display_page(pathname):
     if pathname == '/india':
          return layout_india
     elif pathname == '/world':
-         return layout2
+         return layout_world
     else:
         return '404'
 

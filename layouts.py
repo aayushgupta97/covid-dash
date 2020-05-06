@@ -49,11 +49,6 @@ statewise_total_table = html.Div(dbc.Table.from_dataframe(sort_dataframe_desc_on
 
 fig = make_subplots(rows=3, cols=1, shared_xaxes=True)
 
-
-
-
-
-
 statewise_subplots = html.Div([
     dbc.Col([dcc.Dropdown(
         id='demo-dropdown',
@@ -96,16 +91,5 @@ dbc.Row([
 
 
 
-layout2 = html.Div([
-    html.H3('App 2'),
-    dcc.Dropdown(
-        id='app-2-dropdown',
-        options=[
-            {'label': 'App 2 - {}'.format(i), 'value': i} for i in [
-                'NYC', 'MTL', 'LA'
-            ]
-        ]
-    ),
-    html.Div(id='app-2-display-value'),
-    dcc.Link('Go to App 1', href='/apps/app1')
-])
+layout_world = dbc.Container([])
+index = html.Div([])
