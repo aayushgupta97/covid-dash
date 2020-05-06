@@ -55,10 +55,27 @@ def daily_statewise_and_cumulative_csv():
     recovered.to_csv("data/cumulative/recovered.csv", index=False)
     deceased.to_csv("data/cumulative/deceased.csv", index=False)
 
+def world_timeline_data():
+    """
+    Time Series data for each country.
+    API: 
+    """
+    r=requests.get("https://thevirustracker.com/timeline/map-data.json").json()
+    df = pd.DataFrame(r['data'])
+    df['date'] = df['date'].astype('datetime64[ns]')
+    df = df.sort_values(by=['date'])
+    df.rename(columns={"cases": "confirmed", "deaths": "deceased"}, inplace=True)
+
+    df.to_csv("data/COVID_Global_Timeseries.csv")
+
     
+def world_total_data():
+    pass
+
 
 if __name__=="__main__":
-    make_national_timeseries_data_csv()
-    make_raw_gender_age_data_csv()
-    statewise_total_cases_csv()
-    daily_statewise_and_cumulative_csv()
+    # make_national_timeseries_data_csv()
+    # make_raw_gender_age_data_csv()
+    # statewise_total_cases_csv()
+    # daily_statewise_and_cumulative_csv()
+    world_timeline_data()
