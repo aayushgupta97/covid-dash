@@ -6,6 +6,7 @@ import pandas as pd
 from plotly.subplots import make_subplots
 from src.plots import *
 from src.utils import *
+from src.constant_data import currently_present_in_api_country
 
 navbar = dbc.NavbarSimple(id="navbar",
             children=[
@@ -103,5 +104,21 @@ dbc.Row([
 
 
 
-layout_world = dbc.Container([])
+country_selection_dropdown = dcc.Dropdown(
+        id='country_drop_down',
+        options=currently_present_in_api_country,
+        value=['IN','IT'], # which are pre-selected
+        multi=True
+    )
+world_plot = dcc.Graph(figure=go.Figure(), id='main_world_plot')
+
+layout_world = dbc.Container([
+    html.Br(),
+    dbc.Row(dbc.Col(country_selection_dropdown, width=12)),
+
+    dbc.Row([
+        dbc.Col(world_plot, width = 12)
+        
+    ])
+])
 index = html.Div([])
