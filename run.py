@@ -6,20 +6,8 @@ import dash_bootstrap_components as dbc
 
 
 from app import app
-from layouts import layout_india, layout_world
+from layouts import layout_india, layout_world, navbar
 import callbacks
-
-navbar = dbc.NavbarSimple(id="navbar",
-            children=[
-                dbc.NavItem(dbc.NavLink("India", href="/india")),
-                dbc.NavItem(dbc.NavLink("World", href="/world")),
-            ],
-            brand= "Covid-Dash",
-            brand_href="#",
-            color="primary",
-            dark="True",
-            sticky="top"
-            )
 
 
 app.layout = html.Div([

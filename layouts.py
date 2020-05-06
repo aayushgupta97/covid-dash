@@ -7,6 +7,18 @@ from plotly.subplots import make_subplots
 from src.plots import *
 from src.utils import *
 
+navbar = dbc.NavbarSimple(id="navbar",
+            children=[
+                dbc.NavItem(dbc.NavLink("India", href="/india")),
+                dbc.NavItem(dbc.NavLink("World", href="/world")),
+            ],
+            brand= "Covid-Dash",
+            brand_href="#",
+            color="primary",
+            dark="True",
+            sticky="top"
+            )
+
 
 national_timeseries = pd.read_csv("./data/covid_national_timeseries.csv")
 gender_age_data = pd.read_csv("data/covid_raw_gender_age_full.csv")
