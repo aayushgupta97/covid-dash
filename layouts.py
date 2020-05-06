@@ -14,7 +14,7 @@ navbar = dbc.NavbarSimple(id="navbar",
                 dbc.NavItem(dbc.NavLink("World", href="/world")),
             ],
             brand= "Covid-Dash",
-            brand_href="#",
+            brand_href="/",
             color="primary",
             dark="True",
             sticky="top"
@@ -121,4 +121,88 @@ layout_world = dbc.Container([
         
     ])
 ])
-index = html.Div([])
+
+import requests
+r = requests.get('https://api.thevirustracker.com/free-api?global=stats').json()
+
+homepage_card = dbc.Card(
+    [
+        dbc.CardBody(
+            [
+                dbc.ListGroup(
+    [
+        dbc.ListGroupItemHeading("Today's Update: "),
+        dbc.ListGroupItem(f"New Cases Today: {r['results'][0]['total_new_cases_today']}"),
+        dbc.ListGroupItem(f"Deaths Today: {r['results'][0]['total_new_deaths_today']}"),
+        dbc.ListGroupItem(f"Current Active Cases: {r['results'][0]['total_active_cases']}"),
+    ]
+),html.Hr(),
+
+                dcc.Link(dbc.Button("More World Stats", color="danger"), href="/world")
+            ]
+        ),
+    ],
+    # style={"width": "18rem"},
+)
+
+homepage_card_2 = dbc.Card(
+    [
+        dbc.CardBody(
+            [
+                dbc.ListGroup(
+    [
+        dbc.ListGroupItemHeading("World Totals: "),
+        dbc.ListGroupItem(f"Total: {r['results'][0]['total_cases']}"),
+        dbc.ListGroupItem(f"Deceased: {r['results'][0]['total_deaths']}"),
+        dbc.ListGroupItem(f"Recovered: {r['results'][0]['total_recovered']}")
+    ]
+), html.Hr(),
+
+                dcc.Link(dbc.Button("More World Stats", color="danger"), href="/world")
+            ]
+        ),
+    ],
+    # style={"width": "18rem"},
+)
+
+
+
+ind = requests.get("https://api.thevirustracker.com/free-api?countryTotal=IN").json()
+india_card = dbc.Card(
+    [
+        dbc.CardBody(
+            [   dbc.ListGroup([
+                dbc.ListGroupItemHeading("India Today"),
+                dbc.ListGroupItem(f"Total: {ind['countrydata'][0]['total_cases']}"),
+                dbc.ListGroupItem(f"Deceased: {ind['countrydata'][0]['total_deaths']}"),
+                dbc.ListGroupItem(f"New Cases Today: {ind['countrydata'][0]['total_new_cases_today']}"),
+            ]),html.Hr(),
+                dcc.Link(dbc.Button("More India Stats", color="warning"), href="/india")
+            ]
+        ),
+    ],
+    # style={"width": "18rem"},
+)
+
+
+
+
+index = dbc.Container([
+html.Br(), html.Hr(),
+dbc.Row([
+    dbc.Col(homepage_card, width=4),
+    dbc.Col(homepage_card_2, width=4),
+    dbc.Col(india_card, width=4)
+]),
+
+    html.Div(html.A("Link to GitHub", href="https://github.com/aayushgupta97/covid-dash", style={"color": "white"}),
+   style={
+  "position": "fixed",
+  "left": 0,
+  "bottom": 0,
+  "width": "100%",
+  "background-color": "#007bff",
+  "color": "white",
+  "text-align": "center",
+})
+])

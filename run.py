@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 
 
 from app import app
-from layouts import layout_india, layout_world, navbar
+from layouts import layout_india, layout_world, navbar, index
 import callbacks
 
 
@@ -24,7 +24,7 @@ def display_page(pathname):
     elif pathname == '/world':
          return layout_world
     else:
-        return '404'
+        return index
 
 if __name__ == '__main__':
-    app.run_server()
+    app.run_server(debug=False)

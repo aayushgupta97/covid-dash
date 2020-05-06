@@ -37,7 +37,7 @@ def update_subplot(column_name, plot_type):
 
     return fig
 
-
+### World Callback
 @app.callback(Output("main_world_plot", "figure"),
 [Input("country_drop_down", "value")])
 def update_world_plot(country_list):
@@ -66,3 +66,7 @@ def update_world_plot(country_list):
 
         )
     }
+
+
+
+### Index Page
