@@ -9,6 +9,7 @@ from app import app
 from layouts import layout_india, layout_world, navbar, index
 import callbacks
 
+server = app.server
 
 app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
