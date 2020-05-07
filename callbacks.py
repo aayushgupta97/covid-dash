@@ -76,22 +76,59 @@ def update_world_plot(country_list, time_from, scale_type):
     }
 
 
-import dash_bootstrap_components as dbc
-import dash_html_components as html
-import dash_core_components as dcc
-### Index Page
-ind = requests.get("https://api.thevirustracker.com/free-api?countryTotal=IN").json()
+# import dash_bootstrap_components as dbc
+# import dash_html_components as html
+# import dash_core_components as dcc
+# ### Index Page
+# ind = requests.get("https://api.thevirustracker.com/free-api?countryTotal=IN").json()
 
-@app.callback(Output("india-card", "children"),
-        [Input("interval-component", "n_intervals")])
-def update_india_card(n):
-    return dbc.CardBody(
-            [   dbc.ListGroup([
-                dbc.ListGroupItemHeading("India Today"),
-                dbc.ListGroupItem(f"Total: {ind['countrydata'][0]['total_cases']}"),
-                dbc.ListGroupItem(f"Deceased: {ind['countrydata'][0]['total_deaths']}"),
-                dbc.ListGroupItem(f"New Cases Today: {ind['countrydata'][0]['total_new_cases_today']}"),
-            ]),html.Hr(),
-                dcc.Link(dbc.Button("More India Stats", color="warning"), href="/india")
-            ]
-    )
+# @app.callback(Output("india-card", "children"),
+#         [Input("interval-component", "n_intervals")])
+# def update_india_card(n):
+#     return dbc.CardBody(
+#             [   dbc.ListGroup([
+#                 dbc.ListGroupItemHeading("India Today"),
+#                 dbc.ListGroupItem(f"Total: {ind['countrydata'][0]['total_cases']}"),
+#                 dbc.ListGroupItem(f"Deceased: {ind['countrydata'][0]['total_deaths']}"),
+#                 dbc.ListGroupItem(f"New Cases Today: {ind['countrydata'][0]['total_new_cases_today']}"),
+#             ]),html.Hr(),
+#                 dcc.Link(dbc.Button("More India Stats", color="warning"), href="/india")
+#             ]
+#     )
+
+
+### Index Callback
+@app.callback(Output("total_small_confirmed_plot", "figure"),
+[Input("radio_small_confirmed_plot", "value")])
+def update_total_small_plot(graph_scale):
+    df_plot = global_timeseries.groupby(['date']).sum().reset_index()
+    trace = [go.Scatter(x=df_plot['date'],
+                        y=df_plot['confirmed'],
+                        mode="lines",
+                        name="Confirmed")]
+
+    return {
+        "data": trace,
+        "layout": dict(
+            title=f"Last updated on {df_plot['date'][df_plot.index[-1]]}",
+            yaxis={"type": graph_scale}
+        )
+    }
+
+
+@app.callback(Output("total_small_deceased_plot", "figure"),
+[Input("radio_small_deceased_plot", "value")])
+def update_total_small_plot(graph_scale):
+    df_plot = global_timeseries.groupby(['date']).sum().reset_index()
+    trace = [go.Scatter(x=df_plot['date'],
+                        y=df_plot['deceased'],
+                        mode="lines",
+                        name="Deaths")]
+
+    return {
+        "data": trace,
+        "layout": dict(
+            title=f"Last updated on {df_plot['date'][df_plot.index[-1]]}",
+            yaxis={"type": graph_scale}
+        )
+    }

@@ -141,48 +141,48 @@ layout_world = dbc.Container([
     ])
 ])
 
-import requests
-r = requests.get('https://api.thevirustracker.com/free-api?global=stats').json()
+# import requests
+# r = requests.get('https://api.thevirustracker.com/free-api?global=stats').json()
 
-homepage_card = dbc.Card(
-    [
-        dbc.CardBody(
-            [
-                dbc.ListGroup(
-    [
-        dbc.ListGroupItemHeading("Today's Update: "),
-        dbc.ListGroupItem(f"New Cases Today: {r['results'][0]['total_new_cases_today']}"),
-        dbc.ListGroupItem(f"Deaths Today: {r['results'][0]['total_new_deaths_today']}"),
-        dbc.ListGroupItem(f"Current Active Cases: {r['results'][0]['total_active_cases']}"),
-    ]
-),html.Hr(),
+# homepage_card = dbc.Card(
+#     [
+#         dbc.CardBody(
+#             [
+#                 dbc.ListGroup(
+#     [
+#         dbc.ListGroupItemHeading("Today's Update: "),
+#         dbc.ListGroupItem(f"New Cases Today: {r['results'][0]['total_new_cases_today']}"),
+#         dbc.ListGroupItem(f"Deaths Today: {r['results'][0]['total_new_deaths_today']}"),
+#         dbc.ListGroupItem(f"Current Active Cases: {r['results'][0]['total_active_cases']}"),
+#     ]
+# ),html.Hr(),
 
-                dcc.Link(dbc.Button("More World Stats", color="danger"), href="/world")
-            ]
-        ),
-    ],
-    # style={"width": "18rem"},
-)
+#                 dcc.Link(dbc.Button("More World Stats", color="danger"), href="/world")
+#             ]
+#         ),
+#     ],
+#     # style={"width": "18rem"},
+# )
 
-homepage_card_2 = dbc.Card(
-    [
-        dbc.CardBody(
-            [
-                dbc.ListGroup(
-    [
-        dbc.ListGroupItemHeading("World Totals: "),
-        dbc.ListGroupItem(f"Total: {r['results'][0]['total_cases']}"),
-        dbc.ListGroupItem(f"Deceased: {r['results'][0]['total_deaths']}"),
-        dbc.ListGroupItem(f"Recovered: {r['results'][0]['total_recovered']}")
-    ]
-), html.Hr(),
+# homepage_card_2 = dbc.Card(
+#     [
+#         dbc.CardBody(
+#             [
+#                 dbc.ListGroup(
+#     [
+#         dbc.ListGroupItemHeading("World Totals: "),
+#         dbc.ListGroupItem(f"Total: {r['results'][0]['total_cases']}"),
+#         dbc.ListGroupItem(f"Deceased: {r['results'][0]['total_deaths']}"),
+#         dbc.ListGroupItem(f"Recovered: {r['results'][0]['total_recovered']}")
+#     ]
+# ), html.Hr(),
 
-                dcc.Link(dbc.Button("More World Stats", color="danger"), href="/world")
-            ]
-        ),
-    ],
-    # style={"width": "18rem"},
-)
+#                 dcc.Link(dbc.Button("More World Stats", color="danger"), href="/world")
+#             ]
+#         ),
+#     ],
+#     # style={"width": "18rem"},
+# )
 
 
 
@@ -203,26 +203,53 @@ homepage_card_2 = dbc.Card(
 #     # style={"width": "18rem"},
 # )
 
-india_card = dbc.Card(
-    [
-        dbc.CardBody(id="india-card"),
-        dcc.Interval(
-            id='interval-component',
-            interval=1000*1000, # in milliseconds
-            n_intervals=0
-        )
+# india_card = dbc.Card(
+#     [
+#         dbc.CardBody(id="india-card"),
+#         dcc.Interval(
+#             id='interval-component',
+#             interval=1000*1000, # in milliseconds
+#             n_intervals=0
+#         )
 
  
+#     ]
+# )
+
+card1 = dbc.Card(
+    [
+        dbc.CardHeader(html.H3("Confirmed")),
+        dbc.CardBody([dcc.RadioItems(id="radio_small_confirmed_plot",
+    options=[
+        {'label': 'Logarithmic', 'value': 'log'},
+        {'label': 'Linear Scale', 'value': 'lin'},
+    ],
+    value='lin'),
+        dcc.Graph(id="total_small_confirmed_plot")])
     ]
 )
 
 
+card2 = dbc.Card(
+    [
+        dbc.CardHeader(html.H3("Deceased")),
+        dbc.CardBody([dcc.RadioItems(id="radio_small_deceased_plot",
+    options=[
+        {'label': 'Logarithmic', 'value': 'log'},
+        {'label': 'Linear Scale', 'value': 'lin'},
+    ],
+    value='lin'),
+        dcc.Graph(id="total_small_deceased_plot")])
+    ]
+)
+
 index = dbc.Container([
 html.Br(), html.Hr(),
 dbc.Row([
-    dbc.Col(homepage_card, width=4),
-    dbc.Col(homepage_card_2, width=4),
-    dbc.Col(india_card, width=4)
+    dbc.Col(card1, width=6),
+    dbc.Col(card2, width=6)
+    # dbc.Col(homepage_card_2, width=4),
+    # dbc.Col(india_card, width=4)
 ]),
 
     html.Div(html.A("Link to GitHub", href="https://github.com/aayushgupta97/covid-dash", style={"color": "white"}),

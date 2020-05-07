@@ -65,6 +65,9 @@ def world_timeline_data():
     df['date'] = df['date'].astype('datetime64[ns]')
     df = df.sort_values(by=['date'])
     df.rename(columns={"cases": "confirmed", "deaths": "deceased"}, inplace=True)
+    df['confirmed'] = df['confirmed'].astype(int)
+    df['deceased'] = df['deceased'].astype(int)
+    df['recovered'] = df['recovered'].astype(int)
 
     df.to_csv("data/COVID_Global_Timeseries.csv")
 
