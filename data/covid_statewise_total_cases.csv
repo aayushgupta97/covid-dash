@@ -1,44 +1,44 @@
 active,confirmed,deaths,deltaconfirmed,deltadeaths,deltarecovered,lastupdatedtime,recovered,state,statecode,statenotes
-33560,49588,1698,183,4,186,06/05/2020 18:10:45,14326,Total,TT,
-12089,15525,617,0,0,0,06/05/2020 08:47:46,2819,Maharashtra,MH,"[05-May]<br>
+35990,53186,1790,179,5,71,07/05/2020 17:33:45,15402,Total,TT,
+13013,16758,651,0,0,0,07/05/2020 09:02:46,3094,Maharashtra,MH,"[05-May]<br>
 - Total numbers are updated to the final figure reported for 05th May. <br>
 - 796 cases added by MH govt. on 4th May due to data cleaning <br>
 - 143 cases added by MH govt. on 5th May due to data cleaning <br>"
-4496,6245,368,0,0,0,05/05/2020 21:02:46,1381,Gujarat,GJ,
-3571,5104,65,0,1,0,06/05/2020 17:12:45,1468,Delhi,DL,
-2540,4058,33,0,0,0,05/05/2020 20:12:46,1485,Tamil Nadu,TN,
-1614,3240,90,82,1,11,06/05/2020 15:22:46,1536,Rajasthan,RJ,
-1873,3049,176,0,0,0,05/05/2020 20:52:50,1000,Madhya Pradesh,MP,
-1837,2880,56,0,0,0,05/05/2020 22:14:46,987,Uttar Pradesh,UP,
-1012,1777,36,60,2,140,06/05/2020 11:42:46,729,Andhra Pradesh,AP,
-1293,1451,25,0,0,0,05/05/2020 17:52:46,133,Punjab,PB,
-940,1344,140,0,0,0,05/05/2020 21:18:46,264,West Bengal,WB,"- Cases updated as per WB bulletin as it now provides total number of cases.<br>
+4729,6625,396,0,0,0,06/05/2020 20:26:46,1500,Gujarat,GJ,
+3925,5532,65,0,0,0,07/05/2020 00:02:46,1542,Delhi,DL,
+3278,4829,35,0,0,0,06/05/2020 21:02:46,1516,Tamil Nadu,TN,
+1565,3400,95,83,2,1,07/05/2020 15:45:45,1740,Rajasthan,RJ,
+1854,3138,185,0,0,0,06/05/2020 21:32:46,1099,Madhya Pradesh,MP,
+1808,2998,60,0,0,0,06/05/2020 23:06:47,1130,Uttar Pradesh,UP,
+1015,1833,38,56,2,51,07/05/2020 15:12:46,780,Andhra Pradesh,AP,
+1364,1526,27,0,0,0,06/05/2020 19:32:46,135,Punjab,PB,
+1047,1456,144,0,0,0,06/05/2020 20:02:47,265,West Bengal,WB,"- Cases updated as per WB bulletin as it now provides total number of cases.<br>
 - Deaths due to comorbidities added to total deceased<br>
 - Zones updated as per WB bulletin<br>"
-439,1096,29,0,0,0,05/05/2020 23:12:46,628,Telangana,TG,
-413,741,8,0,0,0,05/05/2020 19:02:46,320,Jammu and Kashmir,JK,
-309,693,29,20,0,23,06/05/2020 17:22:46,354,Karnataka,KA,One active case in KA reduced as a confirmed patient died of non-CoViD19 related reasons
-289,555,6,7,0,4,06/05/2020 15:52:46,260,Haryana,HR,
-377,539,4,4,0,0,06/05/2020 16:12:46,158,Bihar,BR,
-30,503,4,0,0,7,06/05/2020 17:42:47,469,Kerala,KL,Mahe native who expired in Kannur included in Kerala's tally
-122,185,2,8,0,1,06/05/2020 18:10:46,61,Odisha,OR,
-89,125,3,0,0,0,05/05/2020 23:40:46,33,Jharkhand,JH,
-98,120,1,1,0,0,06/05/2020 18:10:47,21,Chandigarh,CH,
+430,1107,29,0,0,0,06/05/2020 20:22:48,648,Telangana,TG,
+445,775,8,0,0,0,06/05/2020 19:42:46,322,Jammu and Kashmir,JK,
+308,705,30,12,1,12,07/05/2020 17:33:47,366,Karnataka,KA,One active case in KA reduced as a confirmed patient died of non-CoViD19 related reasons
+337,604,7,10,0,0,07/05/2020 15:23:47,260,Haryana,HR,
+355,547,4,5,0,0,07/05/2020 16:02:46,188,Bihar,BR,
+25,503,4,0,0,5,07/05/2020 17:22:46,474,Kerala,KL,Mahe native who expired in Kannur included in Kerala's tally
+142,206,2,1,0,1,07/05/2020 15:12:54,62,Odisha,OR,
+112,134,1,10,0,0,07/05/2020 16:52:46,21,Chandigarh,CH,
+87,127,3,0,0,0,06/05/2020 19:42:48,37,Jharkhand,JH,
+62,64,0,0,0,0,06/05/2020 22:31:48,2,Tripura,TR,
 21,61,1,0,0,0,05/05/2020 15:32:46,39,Uttarakhand,UT,
 23,59,0,0,0,0,05/05/2020 23:32:46,36,Chhattisgarh,CT,
-11,45,1,0,0,0,05/05/2020 23:02:46,33,Assam,AS,Includes one case from Nagaland
+10,46,1,0,0,0,06/05/2020 22:42:47,35,Assam,AS,Includes one case from Nagaland
+5,45,3,2,0,0,07/05/2020 15:03:48,34,Himachal Pradesh,HP,"HP has 4 Migrated cases which are reduced from Active #. Also, death of Tibetan refugee is included in deceased numbers, but not in confirmed"
 25,42,0,0,0,0,03/05/2020 14:32:47,17,Ladakh,LA,
-3,43,3,1,0,0,06/05/2020 16:21:46,34,Himachal Pradesh,HP,"HP has 4 Migrated cases which are reduced from Active #. Also, death of Tibetan refugee is included in deceased numbers, but not in confirmed"
-1,33,0,0,0,0,03/05/2020 18:52:51,32,Andaman and Nicobar Islands,AN,
-40,42,0,0,0,0,05/05/2020 23:02:47,2,Tripura,TR,
+0,33,0,0,0,1,07/05/2020 16:52:47,33,Andaman and Nicobar Islands,AN,
 1,12,1,0,0,0,01/05/2020 16:02:47,10,Meghalaya,ML,
 3,9,0,0,0,0,05/05/2020 11:12:46,6,Puducherry,PY,
 0,7,0,0,0,0,19/04/2020 17:04:07,7,Goa,GA,
 0,2,0,0,0,0,20/04/2020 10:04:08,2,Manipur,MN,
 0,1,0,0,0,0,05/05/2020 22:32:47,1,Mizoram,MZ,
 0,1,0,0,0,0,16/04/2020 19:33:11,1,Arunachal Pradesh,AR,
-0,0,0,0,0,0,20/04/2020 08:45:07,0,Nagaland,NL,
 1,1,0,0,0,0,05/05/2020 22:12:46,0,Dadra and Nagar Haveli and Daman and Diu,DN,
+0,0,0,0,0,0,20/04/2020 08:45:07,0,Nagaland,NL,
 0,0,0,0,0,0,26/03/2020 07:19:29,0,Daman and Diu,DD,
 0,0,0,0,0,0,26/03/2020 07:19:29,0,Lakshadweep,LD,
 0,0,0,0,0,0,26/03/2020 07:19:29,0,Sikkim,SK,
