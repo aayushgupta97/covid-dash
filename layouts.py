@@ -102,6 +102,24 @@ dbc.Row([
 ])
 ])   
 
+world_plot_scale = dcc.RadioItems(
+    id="world_plot_scale",
+    options=[
+        {'label': 'Logarithmic', 'value': 'log'},
+        {'label': 'Linear Scale', 'value': 'lin'},
+    ],
+    value='lin'
+)  
+
+world_plot_time = dcc.Dropdown(
+    id="world_plot_time",
+    options=[{"label": "All", "value": 0},
+            {"label": "2 Months", "value": 60},
+            {"label": "1 Month", "value": 30},
+            {"label": "2 Weeks", "value": 14}
+    ],
+    value=60
+)
 
 
 country_selection_dropdown = dcc.Dropdown(
@@ -114,11 +132,12 @@ world_plot = dcc.Graph(figure=go.Figure(), id='main_world_plot')
 
 layout_world = dbc.Container([
     html.Br(),
-    dbc.Row(dbc.Col(country_selection_dropdown, width=12)),
+    dbc.Row([dbc.Col(country_selection_dropdown, width=9),
+             dbc.Col(world_plot_time, width=3)]),
 
     dbc.Row([
-        dbc.Col(world_plot, width = 12)
-        
+        dbc.Col(world_plot, width = 10),
+        dbc.Col(html.Div(world_plot_scale, style={"margin-top": "40px"}), width=2),        
     ])
 ])
 
@@ -167,24 +186,35 @@ homepage_card_2 = dbc.Card(
 
 
 
-ind = requests.get("https://api.thevirustracker.com/free-api?countryTotal=IN").json()
+# ind = requests.get("https://api.thevirustracker.com/free-api?countryTotal=IN").json()
+# india_card = dbc.Card(
+#     [
+#         dbc.CardBody(
+#             [   dbc.ListGroup([
+#                 dbc.ListGroupItemHeading("India Today"),
+#                 dbc.ListGroupItem(f"Total: {ind['countrydata'][0]['total_cases']}"),
+#                 dbc.ListGroupItem(f"Deceased: {ind['countrydata'][0]['total_deaths']}"),
+#                 dbc.ListGroupItem(f"New Cases Today: {ind['countrydata'][0]['total_new_cases_today']}"),
+#             ]),html.Hr(),
+#                 dcc.Link(dbc.Button("More India Stats", color="warning"), href="/india")
+#             ]
+#         ),
+#     ],
+#     # style={"width": "18rem"},
+# )
+
 india_card = dbc.Card(
     [
-        dbc.CardBody(
-            [   dbc.ListGroup([
-                dbc.ListGroupItemHeading("India Today"),
-                dbc.ListGroupItem(f"Total: {ind['countrydata'][0]['total_cases']}"),
-                dbc.ListGroupItem(f"Deceased: {ind['countrydata'][0]['total_deaths']}"),
-                dbc.ListGroupItem(f"New Cases Today: {ind['countrydata'][0]['total_new_cases_today']}"),
-            ]),html.Hr(),
-                dcc.Link(dbc.Button("More India Stats", color="warning"), href="/india")
-            ]
-        ),
-    ],
-    # style={"width": "18rem"},
+        dbc.CardBody(id="india-card"),
+        dcc.Interval(
+            id='interval-component',
+            interval=1000*1000, # in milliseconds
+            n_intervals=0
+        )
+
+ 
+    ]
 )
-
-
 
 
 index = dbc.Container([

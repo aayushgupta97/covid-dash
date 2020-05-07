@@ -39,13 +39,16 @@ def update_subplot(column_name, plot_type):
 
 ### World Callback
 @app.callback(Output("main_world_plot", "figure"),
-[Input("country_drop_down", "value")])
-def update_world_plot(country_list):
+[Input("country_drop_down", "value"),
+Input("world_plot_time", "value"),
+Input("world_plot_scale", "value")])
+def update_world_plot(country_list, time_from, scale_type):
+    idx = -1 * time_from
     traces = []
     for country in country_list:
         df_plot = global_timeseries[global_timeseries['countrycode'] == country]
-        traces.append(dict(x=df_plot['date'],
-                                y=df_plot["confirmed"],
+        traces.append(dict(x=df_plot['date'][idx:],
+                                y=df_plot["confirmed"][idx:],
                                 mode='markers+lines',
                                 opacity=0.9,
                                 name=country
@@ -56,17 +59,39 @@ def update_world_plot(country_list):
             'data': traces,
             'layout': dict (
                 # width=1280,
-                height=600,
+                height=800,
 
                 xaxis={'title':'Timeline',
                         'tickangle':-45,
                         'nticks':20,
                         'tickfont':dict(size=14,color="#7f7f7f"),
+                        'rangeslider': {'visible':True},
+
                       },
+                yaxis={
+                    "type": scale_type,
+                }
 
         )
     }
 
 
-
+import dash_bootstrap_components as dbc
+import dash_html_components as html
+import dash_core_components as dcc
 ### Index Page
+ind = requests.get("https://api.thevirustracker.com/free-api?countryTotal=IN").json()
+
+@app.callback(Output("india-card", "children"),
+        [Input("interval-component", "n_intervals")])
+def update_india_card(n):
+    return dbc.CardBody(
+            [   dbc.ListGroup([
+                dbc.ListGroupItemHeading("India Today"),
+                dbc.ListGroupItem(f"Total: {ind['countrydata'][0]['total_cases']}"),
+                dbc.ListGroupItem(f"Deceased: {ind['countrydata'][0]['total_deaths']}"),
+                dbc.ListGroupItem(f"New Cases Today: {ind['countrydata'][0]['total_new_cases_today']}"),
+            ]),html.Hr(),
+                dcc.Link(dbc.Button("More India Stats", color="warning"), href="/india")
+            ]
+    )
