@@ -57,7 +57,7 @@ def daily_statewise_and_cumulative_csv():
 
 def world_timeline_data():
     """
-    Time Series data for each country.
+    Time Series data for each country for line plot
     API: 
     """
     r=requests.get("https://thevirustracker.com/timeline/map-data.json").json()
@@ -69,8 +69,40 @@ def world_timeline_data():
     df.to_csv("data/COVID_Global_Timeseries.csv")
 
     
-def world_total_data():
-    pass
+def countrywise_total_data():
+    """
+    Data to make a Table with Each countries totals.
+    """
+    r = requests.get("https://api.thevirustracker.com/free-api?countryTotals=ALL").json()
+    data_dict = r['countryitems'][0].copy()
+    data_dict['stat']
+    del data_dict['stat']
+    final = dict(
+    country = list(),
+    code = list(),
+    confirmed = list(),
+    active = list(),
+    recovered = list(),
+    deaths = list(),
+    cases_today = list(),
+    deaths_today = list(),
+    serious = list()
+    )
+    for k, v in data_dict.items():
+        final['country'].append(v['title'])
+        final['code'] .append(v['code'])
+        final['confirmed'].append(v['total_cases'])
+        final['active'].append(v['total_active_cases'])
+        final['recovered'].append(v['total_recovered'])
+        final['deaths'].append(v['total_deaths'])
+        final['cases_today'].append(v['total_new_cases_today'])
+        final['deaths_today'].append(v['total_new_deaths_today'])
+        final['serious'].append(v['total_serious_cases'])
+    
+    df = pd.DataFrame(final)
+    df.to_csv("data/COVID_countrywise_total_data.csv")
+
+
 
 
 if __name__=="__main__":
@@ -79,3 +111,4 @@ if __name__=="__main__":
     statewise_total_cases_csv()
     daily_statewise_and_cumulative_csv()
     world_timeline_data()
+    countrywise_total_data()
