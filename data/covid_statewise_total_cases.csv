@@ -1,36 +1,36 @@
 active,confirmed,deaths,deltaconfirmed,deltadeaths,deltarecovered,lastupdatedtime,recovered,state,statecode,statenotes
-35990,53186,1790,179,5,71,07/05/2020 17:33:45,15402,Total,TT,
+36764,54653,1837,1646,52,687,07/05/2020 22:42:45,16048,Total,TT,
 13013,16758,651,0,0,0,07/05/2020 09:02:46,3094,Maharashtra,MH,"[05-May]<br>
 - Total numbers are updated to the final figure reported for 05th May. <br>
 - 796 cases added by MH govt. on 4th May due to data cleaning <br>
 - 143 cases added by MH govt. on 5th May due to data cleaning <br>"
-4729,6625,396,0,0,0,06/05/2020 20:26:46,1500,Gujarat,GJ,
+4879,7013,425,388,29,209,07/05/2020 22:03:46,1709,Gujarat,GJ,
 3925,5532,65,0,0,0,07/05/2020 00:02:46,1542,Delhi,DL,
-3278,4829,35,0,0,0,06/05/2020 21:02:46,1516,Tamil Nadu,TN,
-1565,3400,95,83,2,1,07/05/2020 15:45:45,1740,Rajasthan,RJ,
-1854,3138,185,0,0,0,06/05/2020 21:32:46,1099,Madhya Pradesh,MP,
-1808,2998,60,0,0,0,06/05/2020 23:06:47,1130,Uttar Pradesh,UP,
-1015,1833,38,56,2,51,07/05/2020 15:12:46,780,Andhra Pradesh,AP,
-1364,1526,27,0,0,0,06/05/2020 19:32:46,135,Punjab,PB,
-1047,1456,144,0,0,0,06/05/2020 20:02:47,265,West Bengal,WB,"- Cases updated as per WB bulletin as it now provides total number of cases.<br>
+3825,5409,37,580,2,31,07/05/2020 22:24:46,1547,Tamil Nadu,TN,
+1439,3427,99,110,6,150,07/05/2020 22:24:47,1889,Rajasthan,RJ,
+1968,3252,185,114,0,0,07/05/2020 22:42:46,1099,Madhya Pradesh,MP,
+1759,3071,62,73,2,120,07/05/2020 19:46:46,1250,Uttar Pradesh,UP,
+1015,1833,38,56,2,51,07/05/2020 22:24:48,780,Andhra Pradesh,AP,
+1467,1644,28,118,1,14,07/05/2020 19:02:46,149,Punjab,PB,
+1101,1548,151,92,7,31,07/05/2020 19:37:47,296,West Bengal,WB,"- Cases updated as per WB bulletin as it now provides total number of cases.<br>
 - Deaths due to comorbidities added to total deceased<br>
 - Zones updated as per WB bulletin<br>"
-430,1107,29,0,0,0,06/05/2020 20:22:48,648,Telangana,TG,
-445,775,8,0,0,0,06/05/2020 19:42:46,322,Jammu and Kashmir,JK,
-308,705,30,12,1,12,07/05/2020 17:33:47,366,Karnataka,KA,One active case in KA reduced as a confirmed patient died of non-CoViD19 related reasons
-337,604,7,10,0,0,07/05/2020 15:23:47,260,Haryana,HR,
-355,547,4,5,0,0,07/05/2020 16:02:46,188,Bihar,BR,
-25,503,4,0,0,5,07/05/2020 17:22:46,474,Kerala,KL,Mahe native who expired in Kannur included in Kerala's tally
-142,206,2,1,0,1,07/05/2020 15:12:54,62,Odisha,OR,
-112,134,1,10,0,0,07/05/2020 16:52:46,21,Chandigarh,CH,
-87,127,3,0,0,0,06/05/2020 19:42:48,37,Jharkhand,JH,
+400,1122,29,15,0,45,07/05/2020 20:27:46,693,Telangana,TG,
+449,793,9,18,1,13,07/05/2020 19:13:50,335,Jammu and Kashmir,JK,
+308,705,30,12,1,12,07/05/2020 22:24:49,366,Karnataka,KA,One active case in KA reduced as a confirmed patient died of non-CoViD19 related reasons
+358,625,7,31,0,0,07/05/2020 22:24:50,260,Haryana,HR,
+326,549,5,7,1,0,07/05/2020 22:30:47,218,Bihar,BR,
+25,503,4,0,0,5,07/05/2020 22:24:52,474,Kerala,KL,Mahe native who expired in Kannur included in Kerala's tally
+155,219,2,14,0,1,07/05/2020 22:15:50,62,Odisha,OR,
+112,134,1,10,0,0,07/05/2020 22:24:53,21,Chandigarh,CH,
+88,132,3,5,0,4,07/05/2020 22:24:54,41,Jharkhand,JH,
 62,64,0,0,0,0,06/05/2020 22:31:48,2,Tripura,TR,
 21,61,1,0,0,0,05/05/2020 15:32:46,39,Uttarakhand,UT,
 23,59,0,0,0,0,05/05/2020 23:32:46,36,Chhattisgarh,CT,
 10,46,1,0,0,0,06/05/2020 22:42:47,35,Assam,AS,Includes one case from Nagaland
-5,45,3,2,0,0,07/05/2020 15:03:48,34,Himachal Pradesh,HP,"HP has 4 Migrated cases which are reduced from Active #. Also, death of Tibetan refugee is included in deceased numbers, but not in confirmed"
+6,46,3,3,0,0,07/05/2020 22:24:56,34,Himachal Pradesh,HP,"HP has 4 Migrated cases which are reduced from Active #. Also, death of Tibetan refugee is included in deceased numbers, but not in confirmed"
 25,42,0,0,0,0,03/05/2020 14:32:47,17,Ladakh,LA,
-0,33,0,0,0,1,07/05/2020 16:52:47,33,Andaman and Nicobar Islands,AN,
+0,33,0,0,0,1,07/05/2020 22:24:57,33,Andaman and Nicobar Islands,AN,
 1,12,1,0,0,0,01/05/2020 16:02:47,10,Meghalaya,ML,
 3,9,0,0,0,0,05/05/2020 11:12:46,6,Puducherry,PY,
 0,7,0,0,0,0,19/04/2020 17:04:07,7,Goa,GA,
