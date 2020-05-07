@@ -7,8 +7,8 @@ attrs=19.3.0=py_0
 backcall=0.1.0=py38_0
 blas=1.0=mkl
 bleach=3.1.4=py_0
-ca-certificates=2020.4.5.1=hecc5488_0
-certifi=2020.4.5.1=py38h32f6830_0
+ca-certificates=2020.1.1=0
+certifi=2020.4.5.1=py38_0
 cffi=1.14.0=py38h2e261b9_0
 chardet=3.0.4=py38_1003
 click=7.1.1=py_0
@@ -34,6 +34,7 @@ glib=2.63.1=h5a9c865_0
 gmp=6.1.2=h6c8ec71_1
 gst-plugins-base=1.14.0=hbbd80ab_1
 gstreamer=1.14.0=hb453b48_1
+gunicorn=20.0.4=py38_0
 icu=58.2=h9c2bf20_1
 idna=2.9=py_1
 importlib_metadata=1.5.0=py38_0
@@ -80,7 +81,7 @@ ncurses=6.2=he6710b0_0
 notebook=6.0.3=py38_0
 numpy=1.18.1=py38h4f9e942_0
 numpy-base=1.18.1=py38hde5b4d6_1
-openssl=1.1.1g=h516909a_0
+openssl=1.1.1g=h7b6447c_0
 pandas=1.0.3=py38h0573a6f_0
 pandas-datareader=0.8.1=py_0
 pandoc=2.2.3.2=0
