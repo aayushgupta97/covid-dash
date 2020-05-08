@@ -2,7 +2,7 @@ from dash.dependencies import Input, Output
 from app import app
 from plotly.subplots import make_subplots
 from src.plots import *
-
+from src.constant_data import country_code_to_name
 ### Read Data
 
 ## India
@@ -51,7 +51,7 @@ def update_world_plot(country_list, time_from, scale_type):
                                 y=df_plot["confirmed"][idx:],
                                 mode='markers+lines',
                                 opacity=0.9,
-                                name=country
+                                name=country_code_to_name[country]
                         )
                 )
     

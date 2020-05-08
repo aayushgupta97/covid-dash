@@ -9,6 +9,9 @@ def make_national_timeseries_data_csv():
 
 
 def statewise_total_cases_csv():
+    """
+    Table data for India.
+    """
     r = requests.get("https://api.covid19india.org/data.json").json()
     df = pd.DataFrame(r['statewise'])
     df.to_csv("data/covid_statewise_total_cases.csv", index=False, sep=",")

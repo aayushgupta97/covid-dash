@@ -121,7 +121,7 @@ world_plot_time = dcc.Dropdown(
 country_selection_dropdown = dcc.Dropdown(
         id='country_drop_down',
         options=currently_present_in_api_country,
-        value=['IN','IT'], # which are pre-selected
+        value=['IN','IT', 'RU', 'DE'], # which are pre-selected
         multi=True
     )
 world_plot = dcc.Graph(figure=go.Figure(), id='main_world_plot')
