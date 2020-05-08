@@ -1,12 +1,12 @@
 active,confirmed,deaths,deltaconfirmed,deltadeaths,deltarecovered,lastupdatedtime,recovered,state,statecode,statenotes
-39523,59304,1983,2953,94,1018,08/05/2020 22:32:07,17794,Total,TT,
+39769,59642,1985,3291,96,1108,08/05/2020 23:24:07,17884,Total,TT,
 14862,19063,731,1089,37,169,08/05/2020 20:54:08,3470,Maharashtra,MH,"[05-May]<br>
 - Total numbers are updated to the final figure reported for 05th May. <br>
 - 796 cases added by MH govt. on 4th May due to data cleaning <br>
 - 143 cases added by MH govt. on 5th May due to data cleaning <br>"
 5082,7403,449,390,24,163,08/05/2020 20:14:10,1872,Gujarat,GJ,
 4364,6009,40,600,3,58,08/05/2020 18:53:20,1605,Tamil Nadu,TN,
-3983,5980,66,0,0,0,07/05/2020 23:02:46,1931,Delhi,DL,
+4230,6318,68,338,2,89,08/05/2020 22:43:27,2020,Delhi,DL,
 1465,3579,103,152,4,122,08/05/2020 22:03:08,2011,Rajasthan,RJ,
 1792,3341,200,89,7,118,08/05/2020 20:33:09,1349,Madhya Pradesh,MP,
 1761,3214,66,143,4,137,08/05/2020 21:54:11,1387,Uttar Pradesh,UP,
@@ -19,7 +19,7 @@ active,confirmed,deaths,deltaconfirmed,deltadeaths,deltarecovered,lastupdatedtim
 450,823,9,30,0,29,08/05/2020 18:03:10,364,Jammu and Kashmir,JK,
 346,753,30,48,0,10,08/05/2020 17:33:10,376,Karnataka,KA,One active case in KA reduced as a confirmed patient died of non-CoViD19 related reasons
 360,647,8,22,1,19,08/05/2020 20:03:10,279,Haryana,HR,
-307,579,5,29,0,49,08/05/2020 20:33:13,267,Bihar,BR,
+307,579,5,29,0,49,08/05/2020 22:36:10,267,Bihar,BR,
 16,504,4,1,0,10,08/05/2020 17:23:10,484,Kerala,KL,Mahe native who expired in Kannur included in Kerala's tally
 205,270,2,51,0,1,08/05/2020 19:22:09,63,Odisha,OR,
 124,146,1,11,0,0,08/05/2020 17:33:12,21,Chandigarh,CH,
@@ -32,7 +32,7 @@ active,confirmed,deaths,deltaconfirmed,deltadeaths,deltarecovered,lastupdatedtim
 25,42,0,0,0,0,03/05/2020 14:32:47,17,Ladakh,LA,
 0,33,0,0,0,0,07/05/2020 22:24:57,33,Andaman and Nicobar Islands,AN,
 1,12,1,0,0,0,01/05/2020 16:02:47,10,Meghalaya,ML,
-8,15,0,6,0,1,08/05/2020 22:32:10,7,Puducherry,PY,
+7,15,0,6,0,2,08/05/2020 23:24:16,8,Puducherry,PY,
 0,7,0,0,0,0,19/04/2020 17:04:07,7,Goa,GA,
 0,2,0,0,0,0,20/04/2020 10:04:08,2,Manipur,MN,
 0,1,0,0,0,0,05/05/2020 22:32:47,1,Mizoram,MZ,

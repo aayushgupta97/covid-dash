@@ -11,3 +11,6 @@ def get_dataframe_with_columns(column_list, df):
 def sort_dataframe_desc_on_int_column(column, df):
     df[column] = df[column].astype(int)
     return df.sort_values(by=[column], ascending=False)
+
+def rename_columns_df(mapping_dictionary, df):
+    return df.rename(columns=mapping_dictionary)

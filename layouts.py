@@ -20,10 +20,14 @@ navbar = dbc.NavbarSimple(id="navbar",
             sticky="top"
             )
 
-
+## Imdia
 national_timeseries = pd.read_csv("./data/covid_national_timeseries.csv")
 gender_age_data = pd.read_csv("data/covid_raw_gender_age_full.csv")
 statewise_total_cases = pd.read_csv("data/covid_statewise_total_cases.csv")
+
+## World
+countrywise_total = pd.read_csv("data/COVID_countrywise_total_data.csv")
+
 
 line_plot_total_cases = html.Div([
         dcc.Graph(id="my-line-plot",
@@ -238,6 +242,19 @@ card2 = dbc.Card(
         dcc.Graph(id="total_small_deceased_plot")])
     ]
 )
+countrywise_total_table = html.Div(dbc.Table.from_dataframe(
+    get_dataframe_with_columns(
+        ["Country, Other", "Total Cases","New Cases", "Total Deaths", "New Deaths","Total Recovered","Active Cases", "Serious, Critical"],rename_columns_df({
+        "confirmed": "Total Cases",
+        "active": "Active Cases",
+        "recovered": "Total Recovered",
+        "deaths": "Total Deaths",
+        "cases_today": "New Cases",
+        "deaths_today": "New Deaths",
+        "serious": "Serious, Critical",
+        "country": "Country, Other"
+    }, sort_dataframe_desc_on_int_column("confirmed", countrywise_total))),
+      striped=True, bordered=True, hover=True))
 
 index = dbc.Container([
 html.Br(), html.Hr(),
@@ -247,6 +264,10 @@ dbc.Row([
     # dbc.Col(homepage_card_2, width=4),
     # dbc.Col(india_card, width=4)
 ]),
+html.Br(), html.Hr(), html.Br(),
+    dbc.Row(
+        dbc.Col(countrywise_total_table)
+    ),
 
     html.Div(html.A("Link to GitHub", href="https://github.com/aayushgupta97/covid-dash", style={"color": "white"}),
    style={

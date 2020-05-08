@@ -1,8 +1,12 @@
 import pandas as pd
 import requests
-
+import time
 
 def make_national_timeseries_data_csv():
+    """
+    National data, with daily confirmed, deceased and recovered counts and
+    total number of confirmed, deceased and recovered count upto that day.
+    """
     r = requests.get("https://api.covid19india.org/data.json").json()
     df = pd.DataFrame(r['cases_time_series'])
     df.to_csv("data/covid_national_timeseries.csv", index=False, sep=",")
@@ -11,6 +15,7 @@ def make_national_timeseries_data_csv():
 def statewise_total_cases_csv():
     """
     Table data for India.
+    Statewise total confirmed, deceased and recovered counts.
     """
     r = requests.get("https://api.covid19india.org/data.json").json()
     df = pd.DataFrame(r['statewise'])
@@ -18,6 +23,10 @@ def statewise_total_cases_csv():
 
 
 def make_raw_gender_age_data_csv():
+    """
+    Raw patient level and district level data. Only extracting and saving
+    the age and gender of few patients.
+    """
     r1 = requests.get("https://api.covid19india.org/raw_data1.json").json()
     r2 = requests.get("https://api.covid19india.org/raw_data2.json").json()
     r3 = requests.get("https://api.covid19india.org/raw_data3.json").json()
@@ -32,6 +41,10 @@ def make_raw_gender_age_data_csv():
 
 
 def daily_statewise_and_cumulative_csv():
+    """
+    State data, with daily confirmed, deceased and recovered counts and
+    total number of confirmed, deceased and recovered count upto that day.
+    """
     integer_columns = ['an', 'ap', 'ar', 'as', 'br', 'ch', 'ct', 'dd', 'dl', 'dn',
        'ga', 'gj', 'hp', 'hr', 'jh', 'jk', 'ka', 'kl', 'la', 'ld', 'mh', 'ml',
        'mn', 'mp', 'mz', 'nl', 'or', 'pb', 'py', 'rj', 'sk', 'tg',
@@ -60,7 +73,7 @@ def daily_statewise_and_cumulative_csv():
 
 def world_timeline_data():
     """
-    Time Series data for each country for line plot
+    Time Series data for each country for line plot.
     API: 
     """
     r=requests.get("https://thevirustracker.com/timeline/map-data.json").json()
@@ -78,6 +91,7 @@ def world_timeline_data():
 def countrywise_total_data():
     """
     Data to make a Table with Each countries totals.
+    Contains totals upto that day and new cases on that day. 
     """
     r = requests.get("https://api.thevirustracker.com/free-api?countryTotals=ALL").json()
     data_dict = r['countryitems'][0].copy()
@@ -106,15 +120,29 @@ def countrywise_total_data():
         final['serious'].append(v['total_serious_cases'])
     
     df = pd.DataFrame(final)
-    df.to_csv("data/COVID_countrywise_total_data.csv")
+    obj = dict(df.sum())
+    df = df.append({
+        "country": "World",
+        "code": "W",
+        "confirmed": obj['confirmed'],
+        "active": obj['active'],
+        "recovered": obj['recovered'],
+        "deaths": obj['deaths'],
+        "cases_today": obj['cases_today'],
+        "deaths_today": obj['deaths_today'],
+        "serious": obj['serious']
+    }, ignore_index=True)
+    df.to_csv("data/COVID_countrywise_total_data.csv", index=False)
 
 
 
 
 if __name__=="__main__":
+    start = time.time()
     make_national_timeseries_data_csv()
     make_raw_gender_age_data_csv()
     statewise_total_cases_csv()
     daily_statewise_and_cumulative_csv()
     world_timeline_data()
     countrywise_total_data()
+    print("Completed in: ", time.time() - start)
