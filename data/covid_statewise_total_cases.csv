@@ -1,38 +1,38 @@
 active,confirmed,deaths,deltaconfirmed,deltadeaths,deltarecovered,lastupdatedtime,recovered,state,statecode,statenotes
-37682,56351,1889,3344,104,1475,07/05/2020 23:52:02,16776,Total,TT,
-13979,17974,694,1216,43,207,07/05/2020 23:22:46,3301,Maharashtra,MH,"[05-May]<br>
+39523,59304,1983,2953,94,1018,08/05/2020 22:32:07,17794,Total,TT,
+14862,19063,731,1089,37,169,08/05/2020 20:54:08,3470,Maharashtra,MH,"[05-May]<br>
 - Total numbers are updated to the final figure reported for 05th May. <br>
 - 796 cases added by MH govt. on 4th May due to data cleaning <br>
 - 143 cases added by MH govt. on 5th May due to data cleaning <br>"
-4879,7013,425,388,29,209,07/05/2020 22:03:46,1709,Gujarat,GJ,
-3983,5980,66,448,1,389,07/05/2020 23:02:46,1931,Delhi,DL,
-3825,5409,37,580,2,31,07/05/2020 22:24:46,1547,Tamil Nadu,TN,
-1439,3427,99,110,6,150,07/05/2020 22:24:47,1889,Rajasthan,RJ,
-1828,3252,193,114,8,132,07/05/2020 23:13:46,1231,Madhya Pradesh,MP,
-1759,3071,62,73,2,120,07/05/2020 19:46:46,1250,Uttar Pradesh,UP,
-1015,1833,38,56,2,51,07/05/2020 22:24:48,780,Andhra Pradesh,AP,
-1467,1644,28,118,1,14,07/05/2020 19:02:46,149,Punjab,PB,
-1101,1548,151,92,7,31,07/05/2020 19:37:47,296,West Bengal,WB,"- Cases updated as per WB bulletin as it now provides total number of cases.<br>
+5082,7403,449,390,24,163,08/05/2020 20:14:10,1872,Gujarat,GJ,
+4364,6009,40,600,3,58,08/05/2020 18:53:20,1605,Tamil Nadu,TN,
+3983,5980,66,0,0,0,07/05/2020 23:02:46,1931,Delhi,DL,
+1465,3579,103,152,4,122,08/05/2020 22:03:08,2011,Rajasthan,RJ,
+1792,3341,200,89,7,118,08/05/2020 20:33:09,1349,Madhya Pradesh,MP,
+1761,3214,66,143,4,137,08/05/2020 21:54:11,1387,Uttar Pradesh,UP,
+1004,1887,41,54,3,62,08/05/2020 12:23:09,842,Andhra Pradesh,AP,
+1550,1731,29,87,1,3,08/05/2020 18:23:10,152,Punjab,PB,
+1195,1678,160,130,9,27,08/05/2020 20:23:10,323,West Bengal,WB,"- Cases updated as per WB bulletin as it now provides total number of cases.<br>
 - Deaths due to comorbidities added to total deceased<br>
 - Zones updated as per WB bulletin<br>"
-400,1122,29,15,0,45,07/05/2020 20:27:46,693,Telangana,TG,
-449,793,9,18,1,13,07/05/2020 19:13:50,335,Jammu and Kashmir,JK,
-308,705,30,12,1,12,07/05/2020 22:24:49,366,Karnataka,KA,One active case in KA reduced as a confirmed patient died of non-CoViD19 related reasons
-358,625,7,31,0,0,07/05/2020 22:24:50,260,Haryana,HR,
-327,550,5,8,1,60,07/05/2020 23:42:46,218,Bihar,BR,
-25,503,4,0,0,5,07/05/2020 22:24:52,474,Kerala,KL,Mahe native who expired in Kannur included in Kerala's tally
-155,219,2,14,0,1,07/05/2020 22:15:50,62,Odisha,OR,
-113,135,1,11,0,0,07/05/2020 23:42:47,21,Chandigarh,CH,
-88,132,3,5,0,4,07/05/2020 22:24:54,41,Jharkhand,JH,
-86,88,0,24,0,0,07/05/2020 23:52:04,2,Tripura,TR,
-21,61,1,0,0,0,05/05/2020 15:32:46,39,Uttarakhand,UT,
+376,1132,29,10,0,34,08/05/2020 21:33:10,727,Telangana,TG,
+450,823,9,30,0,29,08/05/2020 18:03:10,364,Jammu and Kashmir,JK,
+346,753,30,48,0,10,08/05/2020 17:33:10,376,Karnataka,KA,One active case in KA reduced as a confirmed patient died of non-CoViD19 related reasons
+360,647,8,22,1,19,08/05/2020 20:03:10,279,Haryana,HR,
+307,579,5,29,0,49,08/05/2020 20:33:13,267,Bihar,BR,
+16,504,4,1,0,10,08/05/2020 17:23:10,484,Kerala,KL,Mahe native who expired in Kannur included in Kerala's tally
+205,270,2,51,0,1,08/05/2020 19:22:09,63,Odisha,OR,
+124,146,1,11,0,0,08/05/2020 17:33:12,21,Chandigarh,CH,
+88,132,3,0,0,0,07/05/2020 22:24:54,41,Jharkhand,JH,
+86,88,0,0,0,0,07/05/2020 23:52:04,2,Tripura,TR,
+17,63,1,2,0,6,08/05/2020 17:33:14,45,Uttarakhand,UT,
 23,59,0,0,0,0,05/05/2020 23:32:46,36,Chhattisgarh,CT,
-18,54,1,8,0,0,07/05/2020 23:02:49,35,Assam,AS,Includes one case from Nagaland
-6,46,3,3,0,0,07/05/2020 22:24:56,34,Himachal Pradesh,HP,"HP has 4 Migrated cases which are reduced from Active #. Also, death of Tibetan refugee is included in deceased numbers, but not in confirmed"
+22,59,2,5,1,0,08/05/2020 21:54:13,35,Assam,AS,Includes one case from Nagaland
+10,50,3,4,0,0,08/05/2020 21:03:13,34,Himachal Pradesh,HP,"HP has 4 Migrated cases which are reduced from Active #. Also, death of Tibetan refugee is included in deceased numbers, but not in confirmed"
 25,42,0,0,0,0,03/05/2020 14:32:47,17,Ladakh,LA,
-0,33,0,0,0,1,07/05/2020 22:24:57,33,Andaman and Nicobar Islands,AN,
+0,33,0,0,0,0,07/05/2020 22:24:57,33,Andaman and Nicobar Islands,AN,
 1,12,1,0,0,0,01/05/2020 16:02:47,10,Meghalaya,ML,
-3,9,0,0,0,0,05/05/2020 11:12:46,6,Puducherry,PY,
+8,15,0,6,0,1,08/05/2020 22:32:10,7,Puducherry,PY,
 0,7,0,0,0,0,19/04/2020 17:04:07,7,Goa,GA,
 0,2,0,0,0,0,20/04/2020 10:04:08,2,Manipur,MN,
 0,1,0,0,0,0,05/05/2020 22:32:47,1,Mizoram,MZ,
