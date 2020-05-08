@@ -6,7 +6,7 @@ import pandas as pd
 from plotly.subplots import make_subplots
 from src.plots import *
 from src.utils import *
-from src.constant_data import currently_present_in_api_country
+from src.constant_data import currently_present_in_api_country, india_state_code_mapping
 
 navbar = dbc.NavbarSimple(id="navbar",
             children=[
@@ -65,11 +65,7 @@ fig = make_subplots(rows=3, cols=1, shared_xaxes=True)
 statewise_subplots = html.Div([
     dbc.Col([dcc.Dropdown(
         id='demo-dropdown',
-        options=[
-            {'label': 'Maharashtra', 'value': 'mh'},
-            {'label': 'Delhi', 'value': 'dl'},
-            {'label': 'Rajasthan', 'value': 'rj'}
-        ],
+        options=india_state_code_mapping,
         value='dl'
     ),     
     dcc.Dropdown(
