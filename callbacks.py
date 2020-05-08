@@ -16,6 +16,10 @@ recovered_cm = pd.read_csv("data/cumulative/recovered.csv")
 ## World
 global_timeseries = pd.read_csv("data/COVID_Global_Timeseries.csv")
 
+### Modify data for index plots
+df_index_small_plot = global_timeseries.groupby(['date']).sum().reset_index()
+
+
 ### India Callbacks
 @app.callback(Output("statewise_subplot", "figure"),
             [Input("demo-dropdown", "value"),
@@ -101,7 +105,7 @@ def update_world_plot(country_list, time_from, scale_type):
 @app.callback(Output("total_small_confirmed_plot", "figure"),
 [Input("radio_small_confirmed_plot", "value")])
 def update_total_small_plot(graph_scale):
-    df_plot = global_timeseries.groupby(['date']).sum().reset_index()
+    df_plot = df_index_small_plot.groupby(['date']).sum().reset_index()
     trace = [go.Scatter(x=df_plot['date'],
                         y=df_plot['confirmed'],
                         mode="lines",
@@ -119,7 +123,7 @@ def update_total_small_plot(graph_scale):
 @app.callback(Output("total_small_deceased_plot", "figure"),
 [Input("radio_small_deceased_plot", "value")])
 def update_total_small_plot(graph_scale):
-    df_plot = global_timeseries.groupby(['date']).sum().reset_index()
+    df_plot = df_index_small_plot.groupby(['date']).sum().reset_index()
     trace = [go.Scatter(x=df_plot['date'],
                         y=df_plot['deceased'],
                         mode="lines",
