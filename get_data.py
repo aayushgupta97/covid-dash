@@ -1,6 +1,8 @@
 import pandas as pd
 import requests
 import time
+pd.options.mode.chained_assignment = None 
+
 
 def make_national_timeseries_data_csv():
     """
@@ -120,6 +122,11 @@ def countrywise_total_data():
         final['serious'].append(v['total_serious_cases'])
     
     df = pd.DataFrame(final)
+
+    df_top_6 = df.sort_values('confirmed', ascending=False).iloc[:6]
+    country_codes = df_top_6['code'].tolist()
+    make_top_6_country_data(country_codes)
+
     obj = dict(df.sum())
     df = df.append({
         "country": "World",
@@ -137,12 +144,41 @@ def countrywise_total_data():
 
 
 
+def make_top_6_country_data(country_codes):
+    base_url = "https://api.thevirustracker.com/free-api?countryTimeline="
+    count = 1
+    for code in country_codes:
+        url = base_url + code
+        r = requests.get(url).json()
+        print(r.keys())
+        print(r)
+        df = pd.DataFrame(r['timelineitems'][0]).T
+        df = df.reset_index()
+        df = df.rename(columns={"index": "date"})
+        df.drop(df.tail(1).index,inplace=True) 
+        df['date'] = df['date'].astype('datetime64[ns]')
+        df.iloc[:,1:]=df.iloc[:,1:].astype(int)   
+        df['country'] = r['countrytimelinedata'][0]['info']['title']
+        df['code'] = r['countrytimelinedata'][0]['info']['code']
+
+        filepath = "data/top_6_timeseries/country_"+str(count)
+        df.to_csv(filepath, index=False)
+        count= count+ 1
+
+
+
+
+
+
 if __name__=="__main__":
     start = time.time()
+    print("Starting Data Collection: ")
+    print("Gathering data from api.covid19india.org")
     make_national_timeseries_data_csv()
     make_raw_gender_age_data_csv()
     statewise_total_cases_csv()
     daily_statewise_and_cumulative_csv()
+    print("Gathering data from thevirustracker.com")
     world_timeline_data()
     countrywise_total_data()
     print("Completed in: ", time.time() - start)

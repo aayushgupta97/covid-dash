@@ -269,14 +269,14 @@ html.Br(), html.Hr(), html.Br(),
         dbc.Col(countrywise_total_table)
     ),
 
-    html.Div(html.A("Link to GitHub", href="https://github.com/aayushgupta97/covid-dash", style={"color": "white"}),
-   style={
-  "position": "fixed",
-  "left": 0,
-  "bottom": 0,
-  "width": "100%",
-  "background-color": "#007bff",
-  "color": "white",
-  "text-align": "center",
-})
+#     html.Div(html.A("Link to GitHub", href="https://github.com/aayushgupta97/covid-dash", style={"color": "white"}),
+#    style={
+#   "position": "fixed",
+#   "left": 0,
+#   "bottom": 0,
+#   "width": "100%",
+#   "background-color": "#007bff",
+#   "color": "white",
+#   "text-align": "center",
+# })
 ])

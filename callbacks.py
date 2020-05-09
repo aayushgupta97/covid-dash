@@ -16,7 +16,7 @@ recovered_cm = pd.read_csv("data/cumulative/recovered.csv")
 ## World
 global_timeseries = pd.read_csv("data/COVID_Global_Timeseries.csv")
 # countrywise_total = pd.read_csv("data/COVID_countrywise_total_data.csv")
-# top_6 = df.sort_values('confirmed', ascending=False).iloc[:6]
+# top_6 = countrywise_total.sort_values('confirmed', ascending=False).iloc[:6]
 
 ### Modify data for index plots
 df_index_small_plot = global_timeseries.groupby(['date']).sum().reset_index()
