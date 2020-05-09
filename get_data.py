@@ -1,6 +1,8 @@
 import pandas as pd
 import requests
 import time
+import os
+
 pd.options.mode.chained_assignment = None 
 
 
@@ -161,7 +163,8 @@ def make_top_6_country_data(country_codes):
         df['country'] = r['countrytimelinedata'][0]['info']['title']
         df['code'] = r['countrytimelinedata'][0]['info']['code']
 
-        filepath = "data/top_6_timeseries/country_"+str(count)
+        df["new_daily_cases"] = df['new_daily_cases'].apply(lambda x: 0 if x<0 else x)
+        filepath = "data/top_6_timeseries/country_"+str(count)+".csv"
         df.to_csv(filepath, index=False)
         count= count+ 1
 
@@ -172,6 +175,15 @@ def make_top_6_country_data(country_codes):
 
 if __name__=="__main__":
     start = time.time()
+    data_dir = 'data/'
+    os.makedirs(data_dir, exist_ok=True)
+    daily_dir = 'daily/'
+    cumulative_dir = 'cumulative/'
+    top6 = 'top_6_timeseries/'
+    os.makedirs(os.path.join(data_dir, daily_dir), exist_ok=True)
+    os.makedirs(os.path.join(data_dir, cumulative_dir), exist_ok=True)
+    os.makedirs(os.path.join(data_dir, top6), exist_ok=True)
+
     print("Starting Data Collection: ")
     print("Gathering data from api.covid19india.org")
     make_national_timeseries_data_csv()
