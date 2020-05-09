@@ -3,6 +3,7 @@ from app import app
 from plotly.subplots import make_subplots
 from src.plots import *
 from src.constant_data import country_code_to_name
+from src.utils import *
 ### Read Data
 
 ## India
@@ -25,6 +26,12 @@ country_5 = pd.read_csv("data/top_6_timeseries/country_5.csv")
 country_6 = pd.read_csv("data/top_6_timeseries/country_6.csv")
 
 top_6_list = [country_1, country_2, country_3, country_4, country_5, country_6]
+
+global_code_color = label_to_color(global_timeseries['countrycode'], 0, 255, 0, 255, 0, 255)
+global_with_color = global_timeseries.copy()
+global_with_color['color'] = global_with_color['countrycode'].map(global_code_color)
+
+
 ### Modify data for index plots
 df_index_small_plot = global_timeseries.groupby(['date']).sum().reset_index()
 
@@ -119,6 +126,16 @@ def update_top_6_subplot(plot_type):
 
 
     return fig
+
+# @app.callback(Output("race-chart-figure", "figure"),
+#             [Input("race-chart-dropdown", "value")])
+# def update_Race_chart(dd_value):
+#     title = f'Number of {dd_value} on '
+#     list_of_frames = frames_animation(global_with_color, title)
+#     fig = bar_race_plot(global_with_color, title, list_of_frames)
+#     return fig
+
+
 
 ### Index Callback
 @app.callback(Output("total_small_confirmed_plot", "figure"),

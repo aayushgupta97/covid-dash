@@ -65,3 +65,57 @@ def get_cm_subplot(column_name, confirmed, deceased, recovered):
     trace3 = go.Scatter(x=recovered['date'], y=recovered[column_name], mode="markers+lines", name="recovered") 
 
     return trace1, trace2, trace3
+
+
+
+
+def frames_animation(df, title):
+
+    list_of_frames = []
+    initial_date = df['date'].min()
+    final_date = df['date'].max()
+    list_of_dates = df['date'].unique().tolist()
+    for date in list_of_dates:
+            fdata = df[df['date'] == date]
+            list_of_frames.append(go.Frame(data=[go.Bar(x=fdata['countrycode'], y=fdata['confirmed'],
+                                                        marker_color=fdata['color'], hoverinfo='none',
+                                                        textposition='outside', texttemplate='%{x}<br>%{y}',
+                                                        cliponaxis=False)],
+                                           layout=go.Layout(font={'size': 14},
+                                                            plot_bgcolor = '#FFFFFF',
+                                                            xaxis={'showline': False, 'visible': False},
+                                                            yaxis={'showline': False, 'visible': False},
+                                                            bargap=0.15,
+                                                            title=title + str(date))))
+    return list_of_frames 
+
+
+def bar_race_plot (df, title, list_of_frames):
+
+    
+    # initial year - names (categorical variable), number of babies (numerical variable), and color
+    initial_date = df['date'].min()
+    initial_names = df[df['date'] == initial_date].countrycode
+    initial_numbers = df[df['date'] == initial_date].confirmed
+    initial_color = df[df['date'] == initial_date].color
+    range_max = df['confirmed'].max()
+    
+    fig = go.Figure(
+        data=[go.Bar(x=initial_names, y=initial_numbers,
+                       marker_color=initial_color, hoverinfo='none',
+                       textposition='outside', texttemplate='%{x}<br>%{y}',
+                       cliponaxis=False)],
+        layout=go.Layout(font={'size': 14}, plot_bgcolor = '#FFFFFF',
+                         xaxis={'showline': False, 'visible': False},
+                         yaxis={'showline': False, 'visible': False, 'range': (0, range_max)},
+                         bargap=0.15, title=title + str(initial_date),
+                         updatemenus=[dict(type="buttons",
+                                           buttons=[dict(label="Play",
+                                                         method="animate",
+                                                         args=[None,{"frame": {"duration": 2000, "redraw": True}, "fromcurrent": True}]),
+                                                    dict(label="Stop",
+                                                         method="animate",
+                                                         args=[[None],{"frame": {"duration": 0, "redraw": False}, "mode": "immediate","transition": {"duration": 0}}])])]),
+        frames=list(list_of_frames))
+    
+    return fig

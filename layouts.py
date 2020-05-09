@@ -7,7 +7,7 @@ from plotly.subplots import make_subplots
 from src.plots import *
 from src.utils import *
 from src.constant_data import currently_present_in_api_country, india_state_code_mapping
-
+import dash_table
 navbar = dbc.NavbarSimple(id="navbar",
             children=[
                 dbc.NavItem(dbc.NavLink("India", href="/india")),
@@ -63,7 +63,21 @@ pie_gender = html.Div([
             ])
 
 
-statewise_total_table = html.Div(dbc.Table.from_dataframe(sort_dataframe_desc_on_int_column("confirmed", get_dataframe_with_columns(["active", "confirmed", "deaths", "state"], statewise_total_cases)), striped=True, bordered=True, hover=True))
+# statewise_total_table = html.Div(dbc.Table.from_dataframe(sort_dataframe_desc_on_int_column("confirmed", get_dataframe_with_columns(["active", "confirmed", "deaths", "state"], statewise_total_cases)), striped=True, bordered=True, hover=True))
+country_processed_table_data = sort_dataframe_desc_on_int_column("confirmed", get_dataframe_with_columns(["active", "confirmed", "deaths", "state"], statewise_total_cases))
+
+tb = dash_table.DataTable(data=country_processed_table_data.to_dict('records'),
+                            columns=[{'id': c, 'name': c} for c in country_processed_table_data.columns],
+                            # page_action='none',
+    style_table={'height': '600px', 'overflowY': 'auto'},
+    style_cell={
+        # 'whiteSpace': 'normal',
+        'height': 'auto',
+        'textAlign': 'left'
+    },
+    css=[{'selector': '.row', 'rule': 'margin: 0'}])
+
+
 
 fig = make_subplots(rows=3, cols=1, shared_xaxes=True)
 
@@ -97,10 +111,15 @@ dbc.Row([
     dbc.Col(histogram_age_distribution),
     dbc.Col(pie_gender)
 ]),
+html.Hr(),
 dbc.Row([
-    dbc.Col(statewise_total_table, width=4),
+    dbc.Col(tb, width={"size":6, "offset":3}),
+]),
+html.Hr(),
+
+dbc.Row(
     dbc.Col(statewise_subplots)
-])
+)
 ])   
 
 world_plot_scale = dcc.RadioItems(
@@ -274,6 +293,7 @@ html.Br(), html.Hr(), html.Br(),
         dbc.Col(countrywise_total_table)
     ),
 
+
 #     html.Div(html.A("Link to GitHub", href="https://github.com/aayushgupta97/covid-dash", style={"color": "white"}),
 #    style={
 #   "position": "fixed",
@@ -285,3 +305,21 @@ html.Br(), html.Hr(), html.Br(),
 #   "text-align": "center",
 # })
 ])
+
+
+
+# bar_chart_race =     dbc.Row([
+#         dbc.Col(html.Div(
+#         dcc.Dropdown(
+#             id="race-chart-dropdown",
+#         options=[
+#             {"label": "Confirmed", "value":"confirmed"},
+#             {"label": "Deceased", "value": "deceased"}
+#         ],
+#         value='confirmed'
+#     ),), width=3),
+
+#     dbc.Col(
+#             dcc.Graph(id="race-chart-figure")
+#     )       
+#      ] )
