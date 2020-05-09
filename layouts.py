@@ -132,7 +132,7 @@ world_plot = dcc.Graph(figure=go.Figure(), id='main_world_plot')
 
 top_6_subplot = html.Div([
     
-    dcc.Tabs(id='top_6_tab', value='cm', children=[
+    dcc.Tabs(id='top_6_tab', value='daily', children=[
         dcc.Tab(label='Daily', value='daily'),
         dcc.Tab(label='Cumulative', value='cm'),
     ]),

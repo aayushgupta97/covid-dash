@@ -98,25 +98,27 @@ def update_top_6_subplot(plot_type):
                 country_3['country'][0],
                 country_4['country'][0],
                 country_5['country'][0],
-                country_6['country'][0]))
-    print(fig.print_grid())
-    fig.print_grid()
+                country_6['country'][0]), shared_xaxes=True)
+
     row = 1
     col = 1
     for df in top_6_list:
         if plot_type == 'cm':
             fig.append_trace(go.Scatter(x=df['date'], y=df['total_cases'], mode="lines", name=f"Total: {df['total_cases'][df.index[-1]]:,d}"), row=row, col=col)
         else:
-            fig.append_trace(go.Bar(x=df['date'], y=df['new_daily_cases'], name="daily"), row=row, col=col)
+            fig.append_trace(go.Bar(x=df['date'], y=df['new_daily_cases'], name=f"Weekly Avg: {round(df['new_daily_cases'][-7:].sum()/7):,.2f}"), row=row, col=col)
         col = col + 1
         if col > 3:
             row = row + 1
             col = 1
 
+    initial_range = [country_1['date'][country_1.index[-14]], country_1['date'][country_1.index[-1]]]
+    print(initial_range)
+    fig.update_layout(height=600, title_text="Countries with most Confirmed cases", xaxis4={"rangeslider":{"visible" :True},
+                                                                                                 "range": initial_range},xaxis5={"rangeslider":{"visible" :True},
+                                                                                                 "range": initial_range},xaxis6={"rangeslider":{"visible" :True},
+                                                                                                 "range": initial_range})
 
-    fig.update_layout(height=600, title_text="Countries with most Confirmed cases")
-    # changed_id = [p['prop_id'] for p in dash.callback_context.triggered][0]
-    # print(changed_id)
 
     return fig
 
