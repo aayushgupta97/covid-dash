@@ -1,37 +1,37 @@
 active,confirmed,deaths,deltaconfirmed,deltadeaths,deltarecovered,lastupdatedtime,recovered,state,statecode,statenotes
-39938,59830,1987,140,1,14,09/05/2020 15:02:07,17901,Total,TT,
-14862,19063,731,0,0,0,08/05/2020 20:54:08,3470,Maharashtra,MH,"[05-May]<br>
+41402,62808,2101,2894,115,1414,09/05/2020 23:53:07,19301,Total,TT,
+15649,20228,779,1165,48,330,09/05/2020 21:34:08,3800,Maharashtra,MH,"[05-May]<br>
 - Total numbers are updated to the final figure reported for 05th May. <br>
 - 796 cases added by MH govt. on 4th May due to data cleaning <br>
 - 143 cases added by MH govt. on 5th May due to data cleaning <br>"
-5082,7403,449,0,0,0,08/05/2020 20:14:10,1872,Gujarat,GJ,
-4364,6009,40,0,0,0,08/05/2020 18:53:20,1605,Tamil Nadu,TN,
-4230,6318,68,0,0,0,08/05/2020 22:43:27,2020,Delhi,DL,
-1531,3655,103,76,0,10,09/05/2020 14:53:08,2021,Rajasthan,RJ,
-1792,3341,200,0,0,0,08/05/2020 20:33:09,1349,Madhya Pradesh,MP,
-1761,3214,66,0,0,0,08/05/2020 21:54:11,1387,Uttar Pradesh,UP,
-1004,1887,41,0,0,0,08/05/2020 12:23:09,842,Andhra Pradesh,AP,
-1550,1731,29,0,0,0,08/05/2020 18:23:10,152,Punjab,PB,
-1195,1678,160,0,0,0,08/05/2020 20:23:10,323,West Bengal,WB,"- Cases updated as per WB bulletin as it now provides total number of cases.<br>
+5234,7797,472,394,23,219,09/05/2020 19:43:08,2091,Gujarat,GJ,
+4454,6542,68,0,0,0,09/05/2020 18:23:08,2020,Delhi,DL,
+4667,6535,44,526,4,219,09/05/2020 19:23:08,1824,Tamil Nadu,TN,
+1440,3708,106,129,3,151,09/05/2020 22:13:08,2162,Rajasthan,RJ,
+1766,3457,211,116,11,131,09/05/2020 20:35:08,1480,Madhya Pradesh,MP,
+1800,3373,74,159,8,112,09/05/2020 23:13:08,1499,Uttar Pradesh,UP,
+999,1930,44,43,3,45,09/05/2020 16:37:13,887,Andhra Pradesh,AP,
+1243,1786,171,108,11,49,09/05/2020 19:23:09,372,West Bengal,WB,"- Cases updated as per WB bulletin as it now provides total number of cases.<br>
 - Deaths due to comorbidities added to total deceased<br>
 - Zones updated as per WB bulletin<br>"
-376,1132,29,0,0,0,08/05/2020 21:33:10,727,Telangana,TG,
-450,823,9,0,0,0,08/05/2020 18:03:10,364,Jammu and Kashmir,JK,
-379,789,30,36,0,3,09/05/2020 12:33:08,379,Karnataka,KA,One active case in KA reduced as a confirmed patient died of non-CoViD19 related reasons
-365,653,9,6,1,0,09/05/2020 15:02:09,279,Haryana,HR,
-308,580,5,1,0,0,09/05/2020 10:23:08,267,Bihar,BR,
-16,504,4,0,0,0,08/05/2020 17:23:10,484,Kerala,KL,Mahe native who expired in Kannur included in Kerala's tally
-222,287,2,17,0,0,09/05/2020 09:23:09,63,Odisha,OR,
-123,146,2,0,0,0,09/05/2020 10:03:08,21,Chandigarh,CH,
-110,154,3,0,0,0,09/05/2020 09:44:09,41,Jharkhand,JH,
-116,118,0,0,0,0,09/05/2020 00:03:09,2,Tripura,TR,
+1574,1762,31,31,2,5,09/05/2020 18:53:08,157,Punjab,PB,
+382,1163,30,31,1,24,09/05/2020 22:34:09,751,Telangana,TG,
+459,836,9,13,0,4,09/05/2020 17:43:09,368,Jammu and Kashmir,JK,
+377,794,30,41,0,10,09/05/2020 18:42:08,386,Karnataka,KA,One active case in KA reduced as a confirmed patient died of non-CoViD19 related reasons
+376,675,9,28,1,11,09/05/2020 19:37:08,290,Haryana,HR,
+288,611,5,32,0,51,09/05/2020 23:23:09,318,Bihar,BR,
+17,506,4,2,0,1,09/05/2020 17:13:09,485,Kerala,KL,Mahe native who expired in Kannur included in Kerala's tally
+224,294,2,24,0,5,09/05/2020 17:34:09,68,Odisha,OR,
+143,169,2,23,0,3,09/05/2020 19:03:11,24,Chandigarh,CH,
+75,156,3,2,0,37,09/05/2020 23:53:12,78,Jharkhand,JH,
+133,135,0,17,0,0,09/05/2020 23:23:10,2,Tripura,TR,
 20,67,1,4,0,1,09/05/2020 14:35:08,46,Uttarakhand,UT,
-21,59,0,0,0,0,09/05/2020 01:02:10,38,Chhattisgarh,CT,
-23,60,2,0,0,0,09/05/2020 01:02:11,35,Assam,AS,Includes one case from Nagaland
-10,50,3,0,0,0,08/05/2020 21:03:13,34,Himachal Pradesh,HP,"HP has 4 Migrated cases which are reduced from Active #. Also, death of Tibetan refugee is included in deceased numbers, but not in confirmed"
+26,63,2,3,0,0,09/05/2020 22:34:11,35,Assam,AS,Includes one case from Nagaland
+16,59,0,0,0,5,09/05/2020 18:13:09,43,Chhattisgarh,CT,
+11,52,3,2,0,1,09/05/2020 22:22:10,35,Himachal Pradesh,HP,"HP has 4 Migrated cases which are reduced from Active #. Also, death of Tibetan refugee is included in deceased numbers, but not in confirmed"
 24,42,0,0,0,0,09/05/2020 00:13:10,18,Ladakh,LA,
 0,33,0,0,0,0,07/05/2020 22:24:57,33,Andaman and Nicobar Islands,AN,
-1,12,1,0,0,0,01/05/2020 16:02:47,10,Meghalaya,ML,
+2,13,1,1,0,0,09/05/2020 15:43:09,10,Meghalaya,ML,
 2,10,0,0,0,0,09/05/2020 10:03:10,8,Puducherry,PY,
 0,7,0,0,0,0,19/04/2020 17:04:07,7,Goa,GA,
 0,2,0,0,0,0,20/04/2020 10:04:08,2,Manipur,MN,
