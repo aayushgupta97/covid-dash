@@ -20,7 +20,7 @@ navbar = dbc.NavbarSimple(id="navbar",
             sticky="top"
             )
 
-## Imdia
+## India
 national_timeseries = pd.read_csv("./data/covid_national_timeseries.csv")
 gender_age_data = pd.read_csv("data/covid_raw_gender_age_full.csv")
 statewise_total_cases = pd.read_csv("data/covid_statewise_total_cases.csv")
@@ -28,6 +28,7 @@ statewise_total_cases = pd.read_csv("data/covid_statewise_total_cases.csv")
 ## World
 countrywise_total = pd.read_csv("data/COVID_countrywise_total_data.csv")
 
+globalstats = pd.read_csv("data/globalstats.csv")
 
 line_plot_total_cases = html.Div([
         dcc.Graph(id="my-line-plot",
@@ -277,8 +278,83 @@ countrywise_total_table = html.Div(dbc.Table.from_dataframe(
           "height": "500px"
       })
 
+
+global_first_card = dbc.Card(
+    dbc.CardBody(
+        [
+            html.H5(f"{globalstats['total_cases'][0]:,d} total cases", className="card-title"),
+            html.P(f"of which {globalstats['total_active_cases'][0]:,d} are currently active and \
+                {globalstats['total_recovered'][0]:,d} have recovered and {globalstats['total_deaths'][0]:,d} have died."),
+            dcc.Link(dbc.Button("Go somewhere", color="primary"), href="/world"),
+        ]
+    )
+)
+
+
+
+
+# dbc.ListGroupItemHeading("India Today"),
+#                 dbc.ListGroupItem(f"Total: {ind['countrydata'][0]['total_cases']}"),
+#                 dbc.ListGroupItem(f"Deceased: {ind['countrydata'][0]['total_deaths']}"),
+#                 dbc.ListGroupItem(f"New Cases Today: {ind['countrydata'][0]['total_new_cases_today']}"),
+            
+
+
+
+index_tab_card1 = html.Div(
+        dbc.Card([
+        dbc.CardBody([  
+             dbc.ListGroup([
+
+                dbc.ListGroupItemHeading("Total"),
+                dbc.ListGroupItem(f"Total: ", id="lg_item1_card1"),
+                dbc.ListGroupItem(f"Deceased", id="lg_item2_card1"),
+                dbc.ListGroupItem(f"New Cases Today: ", id="lg_item3_card1"),
+            
+
+             ], id="index_tab_card1")
+            ])
+        ])
+)
+
+index_tab_card2 = html.Div(dbc.Card([
+        dbc.CardBody([  
+             dbc.ListGroup([
+                
+                dbc.ListGroupItemHeading("Today"),
+                dbc.ListGroupItem(f"Total: ", id="lg_item1_card2"),
+                dbc.ListGroupItem(f"Deceased:", id="lg_item2_card2"),
+                dbc.ListGroupItem(f"New Cases Today: ", id="lg_item3_card2"),
+            
+             ], id="index_tab_card2")
+            ]),
+    ])
+)
+index_tabs = html.Div([
+    
+    dcc.Tabs(id='index_tabs', value='W', children=[
+        dcc.Tab(label='USA', value='US'),
+        dcc.Tab(label='World', value='W'),
+        dcc.Tab(label='INDIA', value='IN'),
+    ]),
+
+])
+
+
+
 index = dbc.Container([
 html.Br(), html.Hr(),
+dbc.Row(
+    [
+        dbc.Col(index_tabs)
+        # dbc.Col(global_first_card, width={"size": 3, "offset": 3}),
+        # dbc.Col(dbc.Card(dbc.CardBody("hello")), width={"size": 3}),
+    ]), html.Br(),
+dbc.Row([
+    dbc.Col(index_tab_card1, width={"size":3, "offset": 3}),
+    dbc.Col(index_tab_card2, width=3),
+
+]), html.Hr(),
 dbc.Row([
     dbc.Col(card1, width=6),
     dbc.Col(card2, width=6)

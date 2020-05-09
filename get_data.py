@@ -89,7 +89,7 @@ def world_timeline_data():
     df['deceased'] = df['deceased'].astype(int)
     df['recovered'] = df['recovered'].astype(int)
 
-    df.to_csv("data/COVID_Global_Timeseries.csv")
+    df.to_csv("data/COVID_Global_Timeseries.csv", index=False)
 
     
 def countrywise_total_data():
@@ -168,7 +168,14 @@ def make_top_6_country_data(country_codes):
         df.to_csv(filepath, index=False)
         count= count+ 1
 
-
+def parse_global_stats():
+    """
+    Daily count and total count stored in df
+    """
+    r = requests.get("https://api.thevirustracker.com/free-api?global=stats").json()
+    del r['results'][0]['source']
+    df = pd.DataFrame(r['results'][0], index=[0])
+    df.to_csv("data/globalstats.csv", index=False)
 
 
 
@@ -193,4 +200,5 @@ if __name__=="__main__":
     print("Gathering data from thevirustracker.com")
     world_timeline_data()
     countrywise_total_data()
+    parse_global_stats()
     print("Completed in: ", time.time() - start)

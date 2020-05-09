@@ -15,7 +15,7 @@ recovered_cm = pd.read_csv("data/cumulative/recovered.csv")
 
 ## World
 global_timeseries = pd.read_csv("data/COVID_Global_Timeseries.csv")
-# countrywise_total = pd.read_csv("data/COVID_countrywise_total_data.csv")
+countrywise_total = pd.read_csv("data/COVID_countrywise_total_data.csv")
 # top_6 = countrywise_total.sort_values('confirmed', ascending=False).iloc[:6]
 country_1 = pd.read_csv("data/top_6_timeseries/country_1.csv")
 country_2 = pd.read_csv("data/top_6_timeseries/country_2.csv")
@@ -180,3 +180,44 @@ def update_total_small_plot(graph_scale):
             yaxis={"type": graph_scale}
         )
     }
+
+# @app.callback(Output("index_tab_card1", "children"),
+#             [Input("index_tabs", "value")])
+# def update_index_tabs(column_code):
+#     return 
+
+
+# @app.callback(Output("index_tab_card2", "children"),
+#             [Input("index_tabs", "value")])
+# def update_index_tabs():
+#     pass
+
+@app.callback(Output("lg_item1_card1", "children"),
+            [Input("index_tabs", "value")])
+def update_lg_item1_card1(col_code):
+    return f"Confirmed: {countrywise_total['confirmed'][countrywise_total['code'] == col_code].iloc[0]:,d}"
+
+@app.callback(Output("lg_item2_card1", "children"),
+            [Input("index_tabs", "value")])
+def update_lg_item1_card1(col_code):
+    return f"Recovered: {countrywise_total['recovered'][countrywise_total['code'] == col_code].iloc[0]:,d}"
+
+@app.callback(Output("lg_item3_card1", "children"),
+            [Input("index_tabs", "value")])
+def update_lg_item1_card1(col_code):
+    return f"Deaths: {countrywise_total['deaths'][countrywise_total['code'] == col_code].iloc[0]:,d}"
+
+@app.callback(Output("lg_item1_card2", "children"),
+            [Input("index_tabs", "value")])
+def update_lg_item1_card1(col_code):
+    return f"Active: {countrywise_total['active'][countrywise_total['code'] == col_code].iloc[0]:,d}"
+
+@app.callback(Output("lg_item2_card2", "children"),
+            [Input("index_tabs", "value")])
+def update_lg_item1_card1(col_code):
+    return f"Cases Today: {countrywise_total['cases_today'][countrywise_total['code'] == col_code].iloc[0]:,d}"
+
+@app.callback(Output("lg_item3_card2", "children"),
+            [Input("index_tabs", "value")])
+def update_lg_item1_card1(col_code):
+    return f"Deaths Today: {countrywise_total['deaths_today'][countrywise_total['code'] == col_code].iloc[0]:,d}"
