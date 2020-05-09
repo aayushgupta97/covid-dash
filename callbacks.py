@@ -45,8 +45,6 @@ def update_subplot(column_name, plot_type):
 
     fig.append_trace(recovered, row=3, col=1)
     fig.update_layout(height=600, title_text="Statewise Statistics")
-    # changed_id = [p['prop_id'] for p in dash.callback_context.triggered][0]
-    # print(changed_id)
 
     return fig
 
@@ -122,29 +120,6 @@ def update_top_6_subplot(plot_type):
 
     return fig
 
-
-
-# import dash_bootstrap_components as dbc
-# import dash_html_components as html
-# import dash_core_components as dcc
-# ### Index Page
-# ind = requests.get("https://api.thevirustracker.com/free-api?countryTotal=IN").json()
-
-# @app.callback(Output("india-card", "children"),
-#         [Input("interval-component", "n_intervals")])
-# def update_india_card(n):
-#     return dbc.CardBody(
-#             [   dbc.ListGroup([
-#                 dbc.ListGroupItemHeading("India Today"),
-#                 dbc.ListGroupItem(f"Total: {ind['countrydata'][0]['total_cases']}"),
-#                 dbc.ListGroupItem(f"Deceased: {ind['countrydata'][0]['total_deaths']}"),
-#                 dbc.ListGroupItem(f"New Cases Today: {ind['countrydata'][0]['total_new_cases_today']}"),
-#             ]),html.Hr(),
-#                 dcc.Link(dbc.Button("More India Stats", color="warning"), href="/india")
-#             ]
-#     )
-
-
 ### Index Callback
 @app.callback(Output("total_small_confirmed_plot", "figure"),
 [Input("radio_small_confirmed_plot", "value")])
@@ -181,16 +156,6 @@ def update_total_small_plot(graph_scale):
         )
     }
 
-# @app.callback(Output("index_tab_card1", "children"),
-#             [Input("index_tabs", "value")])
-# def update_index_tabs(column_code):
-#     return 
-
-
-# @app.callback(Output("index_tab_card2", "children"),
-#             [Input("index_tabs", "value")])
-# def update_index_tabs():
-#     pass
 
 @app.callback(Output("lg_item1_card1", "children"),
             [Input("index_tabs", "value")])

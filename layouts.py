@@ -141,10 +141,6 @@ top_6_subplot = html.Div([
 ])
 
 
-
-
-
-
 layout_world = dbc.Container([
     html.Br(),
     dbc.Row([dbc.Col(country_selection_dropdown, width=9),
@@ -160,80 +156,6 @@ layout_world = dbc.Container([
     ])
 ])
 
-# import requests
-# r = requests.get('https://api.thevirustracker.com/free-api?global=stats').json()
-
-# homepage_card = dbc.Card(
-#     [
-#         dbc.CardBody(
-#             [
-#                 dbc.ListGroup(
-#     [
-#         dbc.ListGroupItemHeading("Today's Update: "),
-#         dbc.ListGroupItem(f"New Cases Today: {r['results'][0]['total_new_cases_today']}"),
-#         dbc.ListGroupItem(f"Deaths Today: {r['results'][0]['total_new_deaths_today']}"),
-#         dbc.ListGroupItem(f"Current Active Cases: {r['results'][0]['total_active_cases']}"),
-#     ]
-# ),html.Hr(),
-
-#                 dcc.Link(dbc.Button("More World Stats", color="danger"), href="/world")
-#             ]
-#         ),
-#     ],
-#     # style={"width": "18rem"},
-# )
-
-# homepage_card_2 = dbc.Card(
-#     [
-#         dbc.CardBody(
-#             [
-#                 dbc.ListGroup(
-#     [
-#         dbc.ListGroupItemHeading("World Totals: "),
-#         dbc.ListGroupItem(f"Total: {r['results'][0]['total_cases']}"),
-#         dbc.ListGroupItem(f"Deceased: {r['results'][0]['total_deaths']}"),
-#         dbc.ListGroupItem(f"Recovered: {r['results'][0]['total_recovered']}")
-#     ]
-# ), html.Hr(),
-
-#                 dcc.Link(dbc.Button("More World Stats", color="danger"), href="/world")
-#             ]
-#         ),
-#     ],
-#     # style={"width": "18rem"},
-# )
-
-
-
-# ind = requests.get("https://api.thevirustracker.com/free-api?countryTotal=IN").json()
-# india_card = dbc.Card(
-#     [
-#         dbc.CardBody(
-#             [   dbc.ListGroup([
-#                 dbc.ListGroupItemHeading("India Today"),
-#                 dbc.ListGroupItem(f"Total: {ind['countrydata'][0]['total_cases']}"),
-#                 dbc.ListGroupItem(f"Deceased: {ind['countrydata'][0]['total_deaths']}"),
-#                 dbc.ListGroupItem(f"New Cases Today: {ind['countrydata'][0]['total_new_cases_today']}"),
-#             ]),html.Hr(),
-#                 dcc.Link(dbc.Button("More India Stats", color="warning"), href="/india")
-#             ]
-#         ),
-#     ],
-#     # style={"width": "18rem"},
-# )
-
-# india_card = dbc.Card(
-#     [
-#         dbc.CardBody(id="india-card"),
-#         dcc.Interval(
-#             id='interval-component',
-#             interval=1000*1000, # in milliseconds
-#             n_intervals=0
-#         )
-
- 
-#     ]
-# )
 
 card1 = dbc.Card(
     [
@@ -290,17 +212,6 @@ global_first_card = dbc.Card(
     )
 )
 
-
-
-
-# dbc.ListGroupItemHeading("India Today"),
-#                 dbc.ListGroupItem(f"Total: {ind['countrydata'][0]['total_cases']}"),
-#                 dbc.ListGroupItem(f"Deceased: {ind['countrydata'][0]['total_deaths']}"),
-#                 dbc.ListGroupItem(f"New Cases Today: {ind['countrydata'][0]['total_new_cases_today']}"),
-            
-
-
-
 index_tab_card1 = html.Div(
         dbc.Card([
         dbc.CardBody([  
@@ -347,8 +258,6 @@ html.Br(), html.Hr(),
 dbc.Row(
     [
         dbc.Col(index_tabs)
-        # dbc.Col(global_first_card, width={"size": 3, "offset": 3}),
-        # dbc.Col(dbc.Card(dbc.CardBody("hello")), width={"size": 3}),
     ]), html.Br(),
 dbc.Row([
     dbc.Col(index_tab_card1, width={"size":3, "offset": 3}),
@@ -358,8 +267,7 @@ dbc.Row([
 dbc.Row([
     dbc.Col(card1, width=6),
     dbc.Col(card2, width=6)
-    # dbc.Col(homepage_card_2, width=4),
-    # dbc.Col(india_card, width=4)
+
 ]),
 html.Br(), html.Hr(), html.Br(),
     dbc.Row(

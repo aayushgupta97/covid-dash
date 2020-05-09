@@ -200,5 +200,5 @@ if __name__=="__main__":
     print("Gathering data from thevirustracker.com")
     world_timeline_data()
     countrywise_total_data()
-    parse_global_stats()
+    # parse_global_stats()
     print("Completed in: ", time.time() - start)
