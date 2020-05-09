@@ -17,7 +17,14 @@ recovered_cm = pd.read_csv("data/cumulative/recovered.csv")
 global_timeseries = pd.read_csv("data/COVID_Global_Timeseries.csv")
 # countrywise_total = pd.read_csv("data/COVID_countrywise_total_data.csv")
 # top_6 = countrywise_total.sort_values('confirmed', ascending=False).iloc[:6]
+country_1 = pd.read_csv("data/top_6_timeseries/country_1.csv")
+country_2 = pd.read_csv("data/top_6_timeseries/country_2.csv")
+country_3 = pd.read_csv("data/top_6_timeseries/country_3.csv")
+country_4 = pd.read_csv("data/top_6_timeseries/country_4.csv")
+country_5 = pd.read_csv("data/top_6_timeseries/country_5.csv")
+country_6 = pd.read_csv("data/top_6_timeseries/country_6.csv")
 
+top_6_list = [country_1, country_2, country_3, country_4, country_5, country_6]
 ### Modify data for index plots
 df_index_small_plot = global_timeseries.groupby(['date']).sum().reset_index()
 
@@ -80,6 +87,39 @@ def update_world_plot(country_list, time_from, scale_type):
 
         )
     }
+
+
+@app.callback(Output("top_6_subplot", "figure"),
+            [Input("top_6_tab", "value")])
+def update_top_6_subplot(plot_type):
+    fig = make_subplots(rows=2, cols=3, 
+                subplot_titles=(country_1['country'][0],
+                country_2['country'][0],
+                country_3['country'][0],
+                country_4['country'][0],
+                country_5['country'][0],
+                country_6['country'][0]))
+    print(fig.print_grid())
+    fig.print_grid()
+    row = 1
+    col = 1
+    for df in top_6_list:
+        if plot_type == 'cm':
+            fig.append_trace(go.Scatter(x=df['date'], y=df['total_cases'], mode="lines", name=f"Total: {df['total_cases'][df.index[-1]]:,d}"), row=row, col=col)
+        else:
+            fig.append_trace(go.Bar(x=df['date'], y=df['new_daily_cases'], name="daily"), row=row, col=col)
+        col = col + 1
+        if col > 3:
+            row = row + 1
+            col = 1
+
+
+    fig.update_layout(height=600, title_text="Countries with most Confirmed cases")
+    # changed_id = [p['prop_id'] for p in dash.callback_context.triggered][0]
+    # print(changed_id)
+
+    return fig
+
 
 
 # import dash_bootstrap_components as dbc

@@ -130,6 +130,20 @@ country_selection_dropdown = dcc.Dropdown(
     )
 world_plot = dcc.Graph(figure=go.Figure(), id='main_world_plot')
 
+top_6_subplot = html.Div([
+    
+    dcc.Tabs(id='top_6_tab', value='cm', children=[
+        dcc.Tab(label='Daily', value='daily'),
+        dcc.Tab(label='Cumulative', value='cm'),
+    ]),
+    dcc.Graph(id = "top_6_subplot")
+])
+
+
+
+
+
+
 layout_world = dbc.Container([
     html.Br(),
     dbc.Row([dbc.Col(country_selection_dropdown, width=9),
@@ -138,6 +152,10 @@ layout_world = dbc.Container([
     dbc.Row([
         dbc.Col(world_plot, width = 10),
         dbc.Col(html.Div(world_plot_scale, style={"margin-top": "40px"}), width=2),        
+    ]),
+    html.Hr(),
+    dbc.Row([
+        dbc.Col(top_6_subplot)
     ])
 ])
 
@@ -254,7 +272,10 @@ countrywise_total_table = html.Div(dbc.Table.from_dataframe(
         "serious": "Serious, Critical",
         "country": "Country, Other"
     }, sort_dataframe_desc_on_int_column("confirmed", countrywise_total))),
-      striped=True, bordered=True, hover=True))
+      striped=True, bordered=True, hover=True), style={     
+          "overflow": "scroll", 
+          "height": "500px"
+      })
 
 index = dbc.Container([
 html.Br(), html.Hr(),
