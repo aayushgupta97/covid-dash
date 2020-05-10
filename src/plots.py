@@ -30,16 +30,20 @@ def get_line_plot_data(df):
 
 def get_gender_plot(df):
     gender = df['gender']
+    value_count = gender.value_counts()['M'] + gender.value_counts()['F']
     values = [gender.value_counts()['M'], gender.value_counts()['F']]
-    data = [go.Pie(labels=["Male", "Female"] , values=values)]
-    return data
+    data = [go.Pie(labels=["Male", "Female"] , values=values, textinfo="label+value+percent")]
+    return data, value_count
+
+
 
 
 def get_age_hist(df):
     age = df['age'].apply(lambda x: x if bool(x) else np.nan)
     age.dropna(inplace=True)
     data = [go.Histogram(x=age, nbinsx=20)]
-    return data
+    
+    return data, len(age)
 
 
 def quick_plot():

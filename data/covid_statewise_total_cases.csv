@@ -1,17 +1,18 @@
 active,confirmed,deaths,deltaconfirmed,deltadeaths,deltarecovered,lastupdatedtime,recovered,state,statecode,statenotes
-42514,65022,2153,2157,52,1050,10/05/2020 21:22:23,20351,Total,TT,
-15649,20228,779,0,0,0,09/05/2020 21:34:08,3800,Maharashtra,MH,"[05-May]<br>
-- Total numbers are updated to the final figure reported for 05th May. <br>
-- 796 cases added by MH govt. on 4th May due to data cleaning <br>
-- 143 cases added by MH govt. on 5th May due to data cleaning <br>"
+43976,67161,2212,4296,111,1668,10/05/2020 23:34:22,20969,Total,TT,
+17140,22171,832,1943,53,399,10/05/2020 23:03:23,4199,Maharashtra,MH,"[10-May]<br>
+- Total numbers are updated to the final figure reported for 10th May. <br>
+- 665 cases added by MH govt. on 10th May due to data cleaning <br>
+- 143 cases added by MH govt. on 5th May due to data cleaning <br>
+- 796 cases added by MH govt. on 4th May due to data cleaning <br>"
 5157,8195,493,398,21,454,10/05/2020 20:42:25,2545,Gujarat,GJ,
 5198,7204,47,669,3,135,10/05/2020 18:42:24,1959,Tamil Nadu,TN,
 4781,6923,73,381,5,49,09/05/2020 18:23:08,2069,Delhi,DL,"[10-May]<br>
 
 Delhi will be releasing bulletins in the morning, containing data of the previous day. We will add that data to the date on which the report is released, rather than the previous day."
-1470,3753,107,45,1,14,10/05/2020 20:02:25,2176,Rajasthan,RJ,
+1465,3814,108,106,2,79,10/05/2020 22:22:24,2241,Rajasthan,RJ,
 1723,3614,215,157,4,196,10/05/2020 20:33:28,1676,Madhya Pradesh,MP,
-1800,3373,74,0,0,0,09/05/2020 23:13:08,1499,Uttar Pradesh,UP,
+1735,3467,79,94,5,154,10/05/2020 23:02:23,1653,Uttar Pradesh,UP,
 1010,1980,45,50,1,38,09/05/2020 16:37:13,925,Andhra Pradesh,AP,
 1337,1939,185,153,14,45,10/05/2020 20:02:28,417,West Bengal,WB,"- Cases updated as per WB bulletin as it now provides total number of cases.<br>
 - Deaths due to comorbidities added to total deceased<br>
@@ -21,12 +22,12 @@ Delhi will be releasing bulletins in the morning, containing data of the previou
 469,861,9,25,0,15,10/05/2020 19:12:25,383,Jammu and Kashmir,JK,
 394,848,31,54,1,36,10/05/2020 17:44:25,422,Karnataka,KA,One active case in KA reduced as a confirmed patient died of non-CoViD19 related reasons
 394,703,9,28,0,10,10/05/2020 20:02:32,300,Haryana,HR,
-313,673,6,62,1,36,10/05/2020 21:22:24,354,Bihar,BR,
+336,696,6,85,1,36,10/05/2020 23:34:24,354,Bihar,BR,
 20,513,4,7,0,4,10/05/2020 17:53:25,489,Kerala,KL,Mahe native who expired in Kannur included in Kerala's tally
 306,377,3,25,0,0,10/05/2020 20:42:28,68,Odisha,OR,
 146,173,3,4,1,0,10/05/2020 16:43:25,24,Chandigarh,CH,
-75,156,3,0,0,0,10/05/2020 00:49:09,78,Jharkhand,JH,
-133,135,0,0,0,0,09/05/2020 23:23:10,2,Tripura,TR,
+76,157,3,1,0,0,10/05/2020 21:42:24,78,Jharkhand,JH,
+149,151,0,16,0,0,10/05/2020 22:33:25,2,Tripura,TR,
 21,68,1,1,0,0,10/05/2020 20:07:24,46,Uttarakhand,UT,
 26,62,1,0,0,0,10/05/2020 09:52:09,35,Assam,AS,Includes one case from Nagaland
 10,59,0,0,0,6,10/05/2020 14:34:24,49,Chhattisgarh,CT,
@@ -34,7 +35,7 @@ Delhi will be releasing bulletins in the morning, containing data of the previou
 21,42,0,0,0,3,10/05/2020 17:53:28,21,Ladakh,LA,
 0,33,0,0,0,0,07/05/2020 22:24:57,33,Andaman and Nicobar Islands,AN,
 2,13,1,0,0,0,09/05/2020 15:43:09,10,Meghalaya,ML,
-3,11,0,1,0,0,10/05/2020 21:02:24,8,Puducherry,PY,
+4,12,0,2,0,0,10/05/2020 22:43:24,8,Puducherry,PY,
 0,7,0,0,0,0,19/04/2020 17:04:07,7,Goa,GA,
 0,2,0,0,0,0,20/04/2020 10:04:08,2,Manipur,MN,
 0,1,0,0,0,0,05/05/2020 22:32:47,1,Mizoram,MZ,

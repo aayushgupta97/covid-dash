@@ -46,19 +46,28 @@ bar_every_day_case = html.Div([
                     })
     ])
 
+age_data, age_count = get_age_hist(gender_age_data)
 histogram_age_distribution = html.Div([
         dcc.Graph(id="my-histogram",
             figure={
-                "data": get_age_hist(gender_age_data),
-                "layout": {"title": "Age"}
-            })
+                "data": age_data,
+                "layout": {"title": f"Age Distribution<br>Sample Size: {age_count}",
+                
+                "xaxis":{'title':'Age',
+                        # 'tickangle':-45,
+                        'nticks':20,
+                        'tickfont':dict(size=14,color="#7f7f7f"),
+                },
+                "yaxis": {"title": "Count"}
+            }})
     ])
 
+gender_data, gender_count = get_gender_plot(gender_age_data)
 pie_gender = html.Div([
         dcc.Graph("my-pie-graph",
             figure={
-                "data": get_gender_plot(gender_age_data),
-                "layout":{"title":"Gender"}
+                "data": gender_data,
+                "layout":{"title": f"Gender Distribution<br>Sample Size: {gender_count}"}
             })
             ])
 
