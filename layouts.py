@@ -34,7 +34,10 @@ line_plot_total_cases = html.Div([
         dcc.Graph(id="my-line-plot",
                     figure={
                         "data": get_line_plot_data(national_timeseries),
-                        "layout": {"title": "Total Cases"}
+                        "layout": {"title": "Total Cases",
+                                "xaxis": {"title": "Timeline",
+                                        'tickangle': "-45"},
+                                "yaxis":{"title": "Count"}}
                     })
     ])
 
@@ -42,7 +45,10 @@ bar_every_day_case = html.Div([
         dcc.Graph(id="my-bar-plot",
                     figure={
                         "data": get_bar_plot(national_timeseries),
-                        "layout": {"title": "Bar - Daily new cases"}
+                        "layout": {"title": "Daily  Cases",
+                        "xaxis": {"title": "Timeline",
+                                        'tickangle': "-45"},
+                                "yaxis":{"title": "Confirmed"}}
                     })
     ])
 

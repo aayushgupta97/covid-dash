@@ -58,7 +58,8 @@ def update_subplot(column_name, plot_type):
 
     return {
         "data": [confirmed, deceased, recovered],
-        "layout" : {"title": "Statewise Statistics", "barmode": "stack"}
+        "layout" : {"title": "Statewise Statistics", "barmode": "stack",
+                    "xaxis": {"title": "Timeline", "tickangle":"-45", "nticks": "30"}, "yaxis": {"title": "Count"}}
     }
 
 @app.callback(Output("all_state_subplot", "figure"),
@@ -117,6 +118,7 @@ def update_world_plot(country_list, time_from, scale_type):
                       },
                 yaxis={
                     "type": scale_type,
+                    "title": "Confirmed"
                 }
 
         )
