@@ -116,7 +116,7 @@ dbc.Row([
     dbc.Col(tb, width={"size":6, "offset":3}),
 ]),
 html.Hr(),
-
+html.Br(),
 dbc.Row(
     dbc.Col(statewise_subplots)
 )
