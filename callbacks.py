@@ -2,7 +2,7 @@ from dash.dependencies import Input, Output
 from app import app
 from plotly.subplots import make_subplots
 from src.plots import *
-from src.constant_data import country_code_to_name
+from src.constant_data import country_code_to_name, india_state_code_mapping
 from src.utils import *
 ### Read Data
 
@@ -13,6 +13,9 @@ deceased_daily = pd.read_csv("data/daily/deceased.csv")
 deceased_cm = pd.read_csv("data/cumulative/deceased.csv")
 recovered_daily = pd.read_csv("data/daily/recovered.csv")
 recovered_cm = pd.read_csv("data/cumulative/recovered.csv")
+
+state_subplot_title = tuple(state['label'] for state in india_state_code_mapping)
+state_column_codes = [state['value'] for state in india_state_code_mapping]
 
 ## World
 global_timeseries = pd.read_csv("data/COVID_Global_Timeseries.csv")
@@ -55,6 +58,30 @@ def update_subplot(column_name, plot_type):
 
     return fig
 
+
+@app.callback(Output("all_state_subplot", "figure"),
+        [Input("all_state_subplot_scale", "value")])
+def update_state_subplot(graph_scale):
+    state_columns = state_column_codes
+    fig = make_subplots(rows=10, cols=4, 
+            subplot_titles=state_subplot_title, shared_xaxes=False)
+
+    row = 1
+    col= 1
+    for code in state_columns:
+        fig.append_trace(go.Scatter(x=confirmed_cm['date'], y=confirmed_cm[code], mode="lines", showlegend=False), row=row, col=col)
+        fig.update_yaxes(showgrid=False, row=row, col=col, type=graph_scale, tickvals=[1,20,400,8000, 80000])
+        fig.update_xaxes(showticklabels=False)
+
+        col = col + 1
+        if col > 4:
+            row = row + 1
+            col = 1
+
+    fig.update_layout(height=1500, title_text= "State wise plots for to see if the curve is flatterning or not",
+       paper_bgcolor='rgba(0,0,0,0)',
+    plot_bgcolor='rgba(0,0,0,0)')
+    return fig
 ### World Callback
 @app.callback(Output("main_world_plot", "figure"),
 [Input("country_drop_down", "value"),

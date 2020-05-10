@@ -119,7 +119,21 @@ html.Hr(),
 html.Br(),
 dbc.Row(
     dbc.Col(statewise_subplots)
+),
+dbc.Row(
+    html.Div([dcc.RadioItems(
+    id="all_state_subplot_scale",
+    options=[
+        {'label': 'Logarithmic', 'value': 'log'},
+        {'label': 'Linear Scale', 'value': 'linear'},
+    ],
+    value='log'
+),])
+),
+dbc.Row(
+    dbc.Col(dcc.Graph(id="all_state_subplot"), width=12)
 )
+
 ])   
 
 world_plot_scale = dcc.RadioItems(
