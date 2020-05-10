@@ -79,14 +79,14 @@ tb = dash_table.DataTable(data=country_processed_table_data.to_dict('records'),
 
 
 
-fig = make_subplots(rows=3, cols=1, shared_xaxes=True)
+# fig = make_subplots(rows=3, cols=1, shared_xaxes=True)
 
 statewise_subplots = html.Div([
     dbc.Col([dcc.Dropdown(
         id='demo-dropdown',
         options=india_state_code_mapping,
         value='dl'
-    ),     
+    ),
     dcc.Dropdown(
         id="type-dropdown",
         options=[
@@ -95,9 +95,9 @@ statewise_subplots = html.Div([
         ],
         value='daily'
     )
-    ], 
+    ], width={"size": 4, "offset":4}
     ),
-    dcc.Graph(id = "statewise_subplot", figure=fig)
+    dcc.Graph(id = "statewise_subplot")
 ])
 
 
@@ -119,7 +119,7 @@ html.Hr(),
 html.Br(),
 dbc.Row(
     dbc.Col(statewise_subplots)
-),
+), html.Hr(),
 dbc.Row(
     html.Div([dcc.RadioItems(
     id="all_state_subplot_scale",
@@ -128,7 +128,7 @@ dbc.Row(
         {'label': 'Linear Scale', 'value': 'linear'},
     ],
     value='log'
-),])
+),], style={"display": "none"})
 ),
 dbc.Row(
     dbc.Col(dcc.Graph(id="all_state_subplot"), width=12)

@@ -44,20 +44,22 @@ df_index_small_plot = global_timeseries.groupby(['date']).sum().reset_index()
             [Input("demo-dropdown", "value"),
             Input("type-dropdown", "value")])
 def update_subplot(column_name, plot_type):
-    fig = make_subplots(rows=3, cols=1, shared_xaxes=True)
+    # fig = make_subplots(rows=3, cols=1, shared_xaxes=True)
     if plot_type == "cm":
         confirmed, deceased, recovered = get_cm_subplot(column_name, confirmed_cm, deceased_cm, recovered_cm)
     else:
         confirmed, deceased, recovered = get_daily_subplot(column_name,confirmed_daily, deceased_daily, recovered_daily)
-    fig.append_trace(confirmed, row=1, col=1)
+    # fig.append_trace(confirmed, row=1, col=1)
 
-    fig.append_trace(deceased, row=2, col=1)
+    # fig.append_trace(deceased, row=2, col=1)
 
-    fig.append_trace(recovered, row=3, col=1)
-    fig.update_layout(height=600, title_text="Statewise Statistics")
+    # fig.append_trace(recovered, row=3, col=1)
+    # fig.update_layout(height=600, title_text="Statewise Statistics")
 
-    return fig
-
+    return {
+        "data": [confirmed, deceased, recovered],
+        "layout" : {"title": "Statewise Statistics", "barmode": "stack"}
+    }
 
 @app.callback(Output("all_state_subplot", "figure"),
         [Input("all_state_subplot_scale", "value")])
@@ -78,7 +80,7 @@ def update_state_subplot(graph_scale):
             row = row + 1
             col = 1
 
-    fig.update_layout(height=1500, title_text= "State wise plots for to see if the curve is flatterning or not",
+    fig.update_layout(height=1500, title_text= "State wise plots to see the growth and if the curve flattens",
        paper_bgcolor='rgba(0,0,0,0)',
     plot_bgcolor='rgba(0,0,0,0)')
     return fig
