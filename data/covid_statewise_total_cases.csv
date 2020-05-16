@@ -1,38 +1,39 @@
 active,confirmed,deaths,deltaconfirmed,deltadeaths,deltarecovered,lastupdatedtime,recovered,state,statecode,statenotes
-52970,86508,2760,652,7,528,16/05/2020 14:13:23,30773,Total,TT,
+52578,88506,2790,2650,37,2888,16/05/2020 21:44:23,33133,Total,TT,
 21468,29100,1068,0,0,0,15/05/2020 20:43:24,6564,Maharashtra,MH,"[10-May]<br>
 - Total numbers are updated to the final figure reported for 10th May. <br>
 - 665 cases added by MH govt. on 10th May due to data cleaning <br>
 - 143 cases added by MH govt. on 5th May due to data cleaning <br>
 - 796 cases added by MH govt. on 4th May due to data cleaning <br>"
-7438,10108,71,0,0,0,15/05/2020 23:22:24,2599,Tamil Nadu,TN,
-5291,9932,606,0,0,0,15/05/2020 20:53:24,4035,Gujarat,GJ,
+6973,10585,74,477,3,939,16/05/2020 20:29:24,3538,Tamil Nadu,TN,
+6056,10989,625,1057,19,273,16/05/2020 20:44:24,4308,Gujarat,GJ,"[16-May]<br>
+702 backdated cases added today as per the state bulletin"
 5278,9333,129,438,6,408,16/05/2020 14:13:23,3926,Delhi,DL,"[10-May]<br>
 
 Delhi will be releasing bulletins in the morning, containing data of the previous day. We will add that data to the date on which the report is released, rather than the previous day."
 2073,4595,239,0,0,0,15/05/2020 19:23:24,2283,Madhya Pradesh,MP,
-1979,4838,125,91,0,5,16/05/2020 10:41:24,2734,Rajasthan,RJ,
+2052,4924,125,177,0,18,16/05/2020 17:33:24,2747,Rajasthan,RJ,
 1797,4057,95,0,0,0,15/05/2020 22:51:24,2165,Uttar Pradesh,UP,
-1407,2461,225,0,0,0,15/05/2020 20:19:35,829,West Bengal,WB,"- Cases updated as per WB bulletin as it now provides total number of cases.<br>
+1452,2576,232,115,7,63,16/05/2020 20:29:27,892,West Bengal,WB,"- Cases updated as per WB bulletin as it now provides total number of cases.<br>
 - Deaths due to comorbidities added to total deceased<br>
 - Zones updated as per WB bulletin<br>"
 953,2355,49,48,1,101,16/05/2020 12:13:24,1353,Andhra Pradesh,AP,Total includes patients from other states.
-1595,1932,32,0,0,0,15/05/2020 20:09:26,305,Punjab,PB,Cases in Punjab were effectively reduced as some cases were added to 'central pool' as per the bulletin
+657,1946,32,14,0,952,16/05/2020 18:34:30,1257,Punjab,PB,Cases in Punjab were effectively reduced as some cases were added to 'central pool' as per the bulletin
 461,1454,34,0,0,0,15/05/2020 21:03:24,959,Telangana,TG,
-632,1079,7,46,0,0,16/05/2020 13:53:24,440,Bihar,BR,
-548,1079,36,23,0,14,16/05/2020 12:53:24,494,Karnataka,KA,One active case in KA reduced as a confirmed patient died of non-CoViD19 related reasons
-489,1013,11,0,0,0,15/05/2020 18:53:24,513,Jammu and Kashmir,JK,
-377,854,13,0,0,0,15/05/2020 18:58:25,464,Haryana,HR,
+698,1145,7,112,0,0,16/05/2020 20:29:28,440,Bihar,BR,
+559,1092,36,36,0,16,16/05/2020 18:50:25,496,Karnataka,KA,One active case in KA reduced as a confirmed patient died of non-CoViD19 related reasons
+567,1121,12,108,1,29,16/05/2020 20:29:29,542,Jammu and Kashmir,JK,
+360,887,13,33,0,50,16/05/2020 20:29:30,514,Haryana,HR,
 568,737,3,0,0,0,16/05/2020 11:23:24,166,Odisha,OR,
-80,577,4,0,0,0,15/05/2020 17:42:25,493,Kerala,KL,Mahe native who expired in Kannur included in Kerala's tally
-148,191,3,0,0,0,15/05/2020 18:39:25,40,Chandigarh,CH,
+87,588,4,11,0,4,16/05/2020 18:43:25,497,Kerala,KL,Mahe native who expired in Kannur included in Kerala's tally
+137,191,3,0,0,11,16/05/2020 20:29:31,51,Chandigarh,CH,
 115,215,3,4,0,0,16/05/2020 12:23:25,97,Jharkhand,JH,
-114,156,0,0,0,0,16/05/2020 00:24:25,42,Tripura,TR,
+103,167,0,11,0,22,16/05/2020 20:29:32,64,Tripura,TR,
 48,92,2,2,0,0,16/05/2020 12:23:27,41,Assam,AS,"Includes one case from Nagaland <br>
 One patient who migrated to Bihar has been reduced from Active count"
-30,82,1,0,0,0,15/05/2020 20:03:27,51,Uttarakhand,UT,
-35,76,3,0,0,0,16/05/2020 11:33:24,35,Himachal Pradesh,HP,"HP has 4 Migrated cases which are reduced from Active #. Also, death of Tibetan refugee is included in deceased numbers, but not in confirmed"
-10,66,0,0,0,0,16/05/2020 09:22:24,56,Chhattisgarh,CT,
+36,88,1,6,0,0,16/05/2020 18:03:25,51,Uttarakhand,UT,
+36,77,3,1,0,0,16/05/2020 17:23:26,35,Himachal Pradesh,HP,"HP has 4 Migrated cases which are reduced from Active #. Also, death of Tibetan refugee is included in deceased numbers, but not in confirmed"
+8,66,0,0,0,2,16/05/2020 21:44:24,58,Chhattisgarh,CT,
 19,43,0,0,0,0,15/05/2020 19:33:36,24,Ladakh,LA,
 0,33,0,0,0,0,07/05/2020 22:24:57,33,Andaman and Nicobar Islands,AN,
 8,15,0,0,0,0,14/05/2020 19:43:28,7,Goa,GA,
