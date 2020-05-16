@@ -1,6 +1,6 @@
 active,confirmed,deaths,deltaconfirmed,deltadeaths,deltarecovered,lastupdatedtime,recovered,state,statecode,statenotes
-52578,88506,2790,2650,37,2888,16/05/2020 21:44:23,33133,Total,TT,
-21468,29100,1068,0,0,0,15/05/2020 20:43:24,6564,Maharashtra,MH,"[10-May]<br>
+53633,90398,2862,4542,109,3653,16/05/2020 22:39:22,33898,Total,TT,
+22483,30706,1135,1606,67,524,16/05/2020 22:14:24,7088,Maharashtra,MH,"[10-May]<br>
 - Total numbers are updated to the final figure reported for 10th May. <br>
 - 665 cases added by MH govt. on 10th May due to data cleaning <br>
 - 143 cases added by MH govt. on 5th May due to data cleaning <br>
@@ -11,15 +11,15 @@ active,confirmed,deaths,deltaconfirmed,deltadeaths,deltarecovered,lastupdatedtim
 5278,9333,129,438,6,408,16/05/2020 14:13:23,3926,Delhi,DL,"[10-May]<br>
 
 Delhi will be releasing bulletins in the morning, containing data of the previous day. We will add that data to the date on which the report is released, rather than the previous day."
-2073,4595,239,0,0,0,15/05/2020 19:23:24,2283,Madhya Pradesh,MP,
-2052,4924,125,177,0,18,16/05/2020 17:33:24,2747,Rajasthan,RJ,
+2232,4790,243,195,4,32,16/05/2020 22:24:24,2315,Madhya Pradesh,MP,
+1890,4960,126,213,1,215,16/05/2020 22:36:24,2944,Rajasthan,RJ,
 1797,4057,95,0,0,0,15/05/2020 22:51:24,2165,Uttar Pradesh,UP,
 1452,2576,232,115,7,63,16/05/2020 20:29:27,892,West Bengal,WB,"- Cases updated as per WB bulletin as it now provides total number of cases.<br>
 - Deaths due to comorbidities added to total deceased<br>
 - Zones updated as per WB bulletin<br>"
 953,2355,49,48,1,101,16/05/2020 12:13:24,1353,Andhra Pradesh,AP,Total includes patients from other states.
 657,1946,32,14,0,952,16/05/2020 18:34:30,1257,Punjab,PB,Cases in Punjab were effectively reduced as some cases were added to 'central pool' as per the bulletin
-461,1454,34,0,0,0,15/05/2020 21:03:24,959,Telangana,TG,
+504,1509,34,55,0,12,16/05/2020 22:39:24,971,Telangana,TG,
 698,1145,7,112,0,0,16/05/2020 20:29:28,440,Bihar,BR,
 559,1092,36,36,0,16,16/05/2020 18:50:25,496,Karnataka,KA,One active case in KA reduced as a confirmed patient died of non-CoViD19 related reasons
 567,1121,12,108,1,29,16/05/2020 20:29:29,542,Jammu and Kashmir,JK,
