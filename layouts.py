@@ -301,6 +301,22 @@ index_tabs = html.Div([
 
 
 
+# bar_chart_race = dbc.Row([
+#         dbc.Col(html.Div(
+#         dcc.Dropdown(
+#             id="race-chart-dropdown",
+#         options=[
+#             {"label": "Confirmed", "value":"confirmed"},
+#             {"label": "Deceased", "value": "deceased"}
+#         ],
+#         value='confirmed'
+#     ),), width=3),
+
+#     dbc.Col(
+#             dcc.Graph(id="race-chart-figure"), width=12
+#     )       
+#      ] )
+
 index = dbc.Container([
 html.Br(), html.Hr(),
 dbc.Row(
@@ -321,6 +337,20 @@ html.Br(), html.Hr(), html.Br(),
     dbc.Row(
         dbc.Col(countrywise_total_table)
     ),
+    dbc.Row(dbc.Col(html.Div(
+        dcc.Dropdown(
+            id="race-chart-dropdown",
+        options=[
+            {"label": "Confirmed", "value":"confirmed"},
+            {"label": "Deceased", "value": "deceased"}
+        ],
+        value='confirmed'
+    ),), width=3)),
+    dbc.Row(
+            dbc.Col(
+            dcc.Graph(id="race-chart-figure"), width=12
+    )      
+    )
 
 
 #     html.Div(html.A("Link to GitHub", href="https://github.com/aayushgupta97/covid-dash", style={"color": "white"}),
@@ -335,20 +365,3 @@ html.Br(), html.Hr(), html.Br(),
 # })
 ])
 
-
-
-# bar_chart_race =     dbc.Row([
-#         dbc.Col(html.Div(
-#         dcc.Dropdown(
-#             id="race-chart-dropdown",
-#         options=[
-#             {"label": "Confirmed", "value":"confirmed"},
-#             {"label": "Deceased", "value": "deceased"}
-#         ],
-#         value='confirmed'
-#     ),), width=3),
-
-#     dbc.Col(
-#             dcc.Graph(id="race-chart-figure")
-#     )       
-#      ] )

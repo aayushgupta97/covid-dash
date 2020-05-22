@@ -4,39 +4,91 @@ from plotly.subplots import make_subplots
 from src.plots import *
 from src.constant_data import country_code_to_name, india_state_code_mapping
 from src.utils import *
+from functools import lru_cache
+from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor
+import time
 ### Read Data
 
 ## India
-confirmed_daily = pd.read_csv("data/daily/confirmed.csv")
-confirmed_cm = pd.read_csv("data/cumulative/confirmed.csv")
-deceased_daily = pd.read_csv("data/daily/deceased.csv")
-deceased_cm = pd.read_csv("data/cumulative/deceased.csv")
-recovered_daily = pd.read_csv("data/daily/recovered.csv")
-recovered_cm = pd.read_csv("data/cumulative/recovered.csv")
+# confirmed_daily = pd.read_csv("data/daily/confirmed.csv")
+# confirmed_cm = pd.read_csv("data/cumulative/confirmed.csv")
+# deceased_daily = pd.read_csv("data/daily/deceased.csv")
+# deceased_cm = pd.read_csv("data/cumulative/deceased.csv")
+# recovered_daily = pd.read_csv("data/daily/recovered.csv")
+# recovered_cm = pd.read_csv("data/cumulative/recovered.csv")
+
+# state_subplot_title = tuple(state['label'] for state in india_state_code_mapping)
+# state_column_codes = [state['value'] for state in india_state_code_mapping]
+
+# ## World
+# global_timeseries = pd.read_csv("data/COVID_Global_Timeseries.csv")
+# countrywise_total = pd.read_csv("data/COVID_countrywise_total_data.csv")
+# # top_6 = countrywise_total.sort_values('confirmed', ascending=False).iloc[:6]
+# country_1 = pd.read_csv("data/top_6_timeseries/country_1.csv")
+# country_2 = pd.read_csv("data/top_6_timeseries/country_2.csv")
+# country_3 = pd.read_csv("data/top_6_timeseries/country_3.csv")
+# country_4 = pd.read_csv("data/top_6_timeseries/country_4.csv")
+# country_5 = pd.read_csv("data/top_6_timeseries/country_5.csv")
+# country_6 = pd.read_csv("data/top_6_timeseries/country_6.csv")
+
+# top_6_list = [country_1, country_2, country_3, country_4, country_5, country_6]
+
+# global_code_color = label_to_color(global_timeseries['countrycode'], 0, 255, 0, 255, 0, 255)
+# global_with_color = global_timeseries.copy()
+# global_with_color['color'] = global_with_color['countrycode'].map(global_code_color)
+from get_data import execute_all
 
 state_subplot_title = tuple(state['label'] for state in india_state_code_mapping)
 state_column_codes = [state['value'] for state in india_state_code_mapping]
+def get_new_data():
+    """
+    updates the global_timeseries data.
+    """
+    global global_timeseries, countrywise_total, confirmed_daily, confirmed_cm,\
+    deceased_daily, deceased_cm, recovered_daily, recovered_cm, country_1,\
+    country_2, country_3, country_4, country_5, country_6, top_6_list,\
+    global_code_color, global_with_color, df_index_small_plot
+    execute_all()
 
-## World
-global_timeseries = pd.read_csv("data/COVID_Global_Timeseries.csv")
-countrywise_total = pd.read_csv("data/COVID_countrywise_total_data.csv")
-# top_6 = countrywise_total.sort_values('confirmed', ascending=False).iloc[:6]
-country_1 = pd.read_csv("data/top_6_timeseries/country_1.csv")
-country_2 = pd.read_csv("data/top_6_timeseries/country_2.csv")
-country_3 = pd.read_csv("data/top_6_timeseries/country_3.csv")
-country_4 = pd.read_csv("data/top_6_timeseries/country_4.csv")
-country_5 = pd.read_csv("data/top_6_timeseries/country_5.csv")
-country_6 = pd.read_csv("data/top_6_timeseries/country_6.csv")
+    confirmed_daily = pd.read_csv("data/daily/confirmed.csv")
+    confirmed_cm = pd.read_csv("data/cumulative/confirmed.csv")
+    deceased_daily = pd.read_csv("data/daily/deceased.csv")
+    deceased_cm = pd.read_csv("data/cumulative/deceased.csv")
+    recovered_daily = pd.read_csv("data/daily/recovered.csv")
+    recovered_cm = pd.read_csv("data/cumulative/recovered.csv")
 
-top_6_list = [country_1, country_2, country_3, country_4, country_5, country_6]
+    ## World
+    global_timeseries = pd.read_csv("data/COVID_Global_Timeseries.csv")
+    countrywise_total = pd.read_csv("data/COVID_countrywise_total_data.csv")
+    # top_6 = countrywise_total.sort_values('confirmed', ascending=False).iloc[:6]
+    country_1 = pd.read_csv("data/top_6_timeseries/country_1.csv")
+    country_2 = pd.read_csv("data/top_6_timeseries/country_2.csv")
+    country_3 = pd.read_csv("data/top_6_timeseries/country_3.csv")
+    country_4 = pd.read_csv("data/top_6_timeseries/country_4.csv")
+    country_5 = pd.read_csv("data/top_6_timeseries/country_5.csv")
+    country_6 = pd.read_csv("data/top_6_timeseries/country_6.csv")
 
-global_code_color = label_to_color(global_timeseries['countrycode'], 0, 255, 0, 255, 0, 255)
-global_with_color = global_timeseries.copy()
-global_with_color['color'] = global_with_color['countrycode'].map(global_code_color)
+    top_6_list = [country_1, country_2, country_3, country_4, country_5, country_6]
 
+    global_code_color = label_to_color(global_timeseries['countrycode'], 0, 255, 0, 255, 0, 255)
+    global_with_color = global_timeseries.copy()
+    global_with_color['color'] = global_with_color['countrycode'].map(global_code_color)
+    df_index_small_plot = global_timeseries.groupby(['date']).sum().reset_index()
+    
+
+def get_new_data_every(period=60):
+    """
+    update the data every 'period' seconds
+    """
+    while True:
+        get_new_data()
+        print("data has been updated")
+        time.sleep(period)
+executor = ThreadPoolExecutor(max_workers=1)
+executor.submit(get_new_data_every)
 
 ### Modify data for index plots
-df_index_small_plot = global_timeseries.groupby(['date']).sum().reset_index()
+
 
 
 ### India Callbacks
@@ -64,6 +116,7 @@ def update_subplot(column_name, plot_type):
 
 @app.callback(Output("all_state_subplot", "figure"),
         [Input("all_state_subplot_scale", "value")])
+@lru_cache(maxsize=32)
 def update_state_subplot(graph_scale):
     state_columns = state_column_codes
     fig = make_subplots(rows=10, cols=4, 
@@ -127,6 +180,7 @@ def update_world_plot(country_list, time_from, scale_type):
 
 @app.callback(Output("top_6_subplot", "figure"),
             [Input("top_6_tab", "value")])
+@lru_cache(maxsize=32)
 def update_top_6_subplot(plot_type):
     fig = make_subplots(rows=2, cols=3, 
                 subplot_titles=(country_1['country'][0],
@@ -158,13 +212,13 @@ def update_top_6_subplot(plot_type):
 
     return fig
 
-# @app.callback(Output("race-chart-figure", "figure"),
-#             [Input("race-chart-dropdown", "value")])
-# def update_Race_chart(dd_value):
-#     title = f'Number of {dd_value} on '
-#     list_of_frames = frames_animation(global_with_color, title)
-#     fig = bar_race_plot(global_with_color, title, list_of_frames)
-#     return fig
+@app.callback(Output("race-chart-figure", "figure"),
+            [Input("race-chart-dropdown", "value")])
+def update_Race_chart(dd_value):
+    title = f'Number of {dd_value} on '
+    list_of_frames = frames_animation(global_with_color, title)
+    fig = bar_race_plot(global_with_color, title, list_of_frames)
+    return fig
 
 
 

@@ -7,6 +7,28 @@ INDEX_MARCH_1 = 31
 Each Function returns a data list, containing the traces used in plots.
 """
 
+class QuickPlot:
+    def __init__(self, starting_index=0):
+        self.starting_index = starting_index
+    
+    def bar(self, df, x_col, y_col):
+        data = [go.Bar(x=df[x_col][self.starting_index:], y=df[y_col][self.starting_index:])]
+        return data
+    
+
+class QuickTrace:
+    def __init__(self, starting_index=0):
+        self.starting_index = starting_index 
+    
+    def bar_trace(self, df, x_col, y_col):
+        return go.Bar(x=df[x_col][self.starting_index:], y=df[y_col][self.starting_index:])
+
+    def scatter_trace(self, df, x_col, y_col, name=None):
+        return go.Scatter(x=df[x_col][self.starting_index:],
+                    y=df[y_col][self.starting_index:],
+                    mode="lines",
+                    name=name)
+    
 
 ### Getting data for api.covid API and making dataframe
 def get_line_plot_data(df):
@@ -80,7 +102,8 @@ def frames_animation(df, title):
     final_date = df['date'].max()
     list_of_dates = df['date'].unique().tolist()
     for date in list_of_dates:
-            fdata = df[df['date'] == date]
+            tdata = df[df['date'] == date]
+            fdata = tdata.sort_values(by='confirmed', ascending=False)[:10]
             list_of_frames.append(go.Frame(data=[go.Bar(x=fdata['countrycode'], y=fdata['confirmed'],
                                                         marker_color=fdata['color'], hoverinfo='none',
                                                         textposition='outside', texttemplate='%{x}<br>%{y}',
@@ -99,6 +122,8 @@ def bar_race_plot (df, title, list_of_frames):
     
     # initial year - names (categorical variable), number of babies (numerical variable), and color
     initial_date = df['date'].min()
+    tmp = df[df['date'] == initial_date]
+    df = tmp.sort_values(by='confirmed', ascending=False)[:10]
     initial_names = df[df['date'] == initial_date].countrycode
     initial_numbers = df[df['date'] == initial_date].confirmed
     initial_color = df[df['date'] == initial_date].color

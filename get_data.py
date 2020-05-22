@@ -131,7 +131,9 @@ def countrywise_total_data():
 
     df_top_6 = df.sort_values('confirmed', ascending=False).iloc[:6]
     country_codes = df_top_6['code'].tolist()
+    print("foo")
     make_top_6_country_data(country_codes)
+    print("bar")
 
     obj = dict(df.sum())
     df = df.append({
@@ -182,9 +184,7 @@ def parse_global_stats():
     df.to_csv("data/globalstats.csv", index=False)
 
 
-
-
-if __name__=="__main__":
+def execute_all():
     start = time.time()
     data_dir = 'data/'
     os.makedirs(data_dir, exist_ok=True)
@@ -206,3 +206,7 @@ if __name__=="__main__":
     countrywise_total_data()
     parse_global_stats()
     print("Completed in: ", time.time() - start)
+
+if __name__=="__main__":
+    execute_all()
+    
