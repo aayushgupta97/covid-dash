@@ -74,9 +74,10 @@ def get_new_data():
     global_with_color = global_timeseries.copy()
     global_with_color['color'] = global_with_color['countrycode'].map(global_code_color)
     df_index_small_plot = global_timeseries.groupby(['date']).sum().reset_index()
+
     
 
-def get_new_data_every(period=60):
+def get_new_data_every(period=3600):
     """
     update the data every 'period' seconds
     """

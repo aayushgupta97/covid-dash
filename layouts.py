@@ -19,9 +19,9 @@ navbar = dbc.NavbarSimple(id="navbar",
             dark="True",
             sticky="top"
             )
-
+# from callbacks import national_timeseries, gender_age_data, statewise_total_cases, countrywise_total,globalstats
 ## India
-national_timeseries = pd.read_csv("./data/covid_national_timeseries.csv")
+national_timeseries = pd.read_csv("data/covid_national_timeseries.csv")
 gender_age_data = pd.read_csv("data/covid_raw_gender_age_full.csv")
 statewise_total_cases = pd.read_csv("data/covid_statewise_total_cases.csv")
 
