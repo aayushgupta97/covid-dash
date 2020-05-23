@@ -19,8 +19,7 @@ navbar = dbc.NavbarSimple(id="navbar",
             dark="True",
             sticky="top"
             )
-# from callbacks import national_timeseries, gender_age_data, statewise_total_cases, countrywise_total,globalstats
-## India
+# India
 national_timeseries = pd.read_csv("data/covid_national_timeseries.csv")
 gender_age_data = pd.read_csv("data/covid_raw_gender_age_full.csv")
 statewise_total_cases = pd.read_csv("data/covid_statewise_total_cases.csv")
@@ -248,7 +247,6 @@ countrywise_total_table = html.Div(dbc.Table.from_dataframe(
           "height": "500px"
       })
 
-
 global_first_card = dbc.Card(
     dbc.CardBody(
         [
@@ -337,20 +335,7 @@ html.Br(), html.Hr(), html.Br(),
     dbc.Row(
         dbc.Col(countrywise_total_table)
     ),
-    dbc.Row(dbc.Col(html.Div(
-        dcc.Dropdown(
-            id="race-chart-dropdown",
-        options=[
-            {"label": "Confirmed", "value":"confirmed"},
-            {"label": "Deceased", "value": "deceased"}
-        ],
-        value='confirmed'
-    ),), width=3)),
-    dbc.Row(
-            dbc.Col(
-            dcc.Graph(id="race-chart-figure"), width=12
-    )      
-    )
+    
 
 
 #     html.Div(html.A("Link to GitHub", href="https://github.com/aayushgupta97/covid-dash", style={"color": "white"}),
@@ -365,3 +350,20 @@ html.Br(), html.Hr(), html.Br(),
 # })
 ])
 
+
+
+
+# dbc.Row(dbc.Col(html.Div(
+#         dcc.Dropdown(
+#             id="race-chart-dropdown",
+#         options=[
+#             {"label": "Confirmed", "value":"confirmed"},
+#             {"label": "Deceased", "value": "deceased"}
+#         ],
+#         value='confirmed'
+#     ),), width=3)),
+#     dbc.Row(
+#             dbc.Col(
+#             dcc.Graph(id="race-chart-figure"), width=12
+#     )      
+#     )

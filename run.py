@@ -1,3 +1,4 @@
+import callbacks
 import pandas as pd
 import dash_core_components as dcc
 import dash_html_components as html
@@ -7,7 +8,6 @@ import dash_bootstrap_components as dbc
 
 from app import app
 from layouts import layout_india, layout_world, navbar, index
-import callbacks
 
 server = app.server
 

@@ -48,6 +48,7 @@ def get_new_data():
     deceased_daily, deceased_cm, recovered_daily, recovered_cm, country_1,\
     country_2, country_3, country_4, country_5, country_6, top_6_list,\
     global_code_color, global_with_color, df_index_small_plot
+    
     execute_all()
 
     confirmed_daily = pd.read_csv("data/daily/confirmed.csv")
@@ -74,10 +75,9 @@ def get_new_data():
     global_with_color = global_timeseries.copy()
     global_with_color['color'] = global_with_color['countrycode'].map(global_code_color)
     df_index_small_plot = global_timeseries.groupby(['date']).sum().reset_index()
-
     
 
-def get_new_data_every(period=3600):
+def get_new_data_every(period=3060):
     """
     update the data every 'period' seconds
     """
