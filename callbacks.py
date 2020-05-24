@@ -265,36 +265,30 @@ def update_total_small_plot(graph_scale):
 
 @app.callback(Output("lg_item1_card1", "children"),
             [Input("index_tabs", "value")])
-@cache.memoize(timeout=1200)
 def update_lg_item1_card1(col_code):
     return f"Confirmed: {countrywise_total['confirmed'][countrywise_total['code'] == col_code].iloc[0]:,d}"
 
 @app.callback(Output("lg_item2_card1", "children"),
             [Input("index_tabs", "value")])
-@cache.memoize(timeout=1200)
 def update_lg_item1_card1(col_code):
     return f"Recovered: {countrywise_total['recovered'][countrywise_total['code'] == col_code].iloc[0]:,d}"
 
 @app.callback(Output("lg_item3_card1", "children"),
             [Input("index_tabs", "value")])
-@cache.memoize(timeout=1200)
 def update_lg_item1_card1(col_code):
     return f"Deaths: {countrywise_total['deaths'][countrywise_total['code'] == col_code].iloc[0]:,d}"
 
 @app.callback(Output("lg_item1_card2", "children"),
             [Input("index_tabs", "value")])
-@cache.memoize(timeout=1200)
 def update_lg_item1_card1(col_code):
     return f"Active: {countrywise_total['active'][countrywise_total['code'] == col_code].iloc[0]:,d}"
 
 @app.callback(Output("lg_item2_card2", "children"),
             [Input("index_tabs", "value")])
-@cache.memoize(timeout=1200)
 def update_lg_item1_card1(col_code):
     return f"Cases Today: {countrywise_total['cases_today'][countrywise_total['code'] == col_code].iloc[0]:,d}"
 
 @app.callback(Output("lg_item3_card2", "children"),
             [Input("index_tabs", "value")])
-@cache.memoize(timeout=1200)
 def update_lg_item1_card1(col_code):
     return f"Deaths Today: {countrywise_total['deaths_today'][countrywise_total['code'] == col_code].iloc[0]:,d}"
