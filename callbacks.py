@@ -1,5 +1,5 @@
 from dash.dependencies import Input, Output
-from app import app
+from app import app, cache
 from plotly.subplots import make_subplots
 from src.plots import *
 from src.constant_data import country_code_to_name, india_state_code_mapping
@@ -77,7 +77,7 @@ def get_new_data():
     df_index_small_plot = global_timeseries.groupby(['date']).sum().reset_index()
     
 
-def get_new_data_every(period=3060):
+def get_new_data_every(period=3600):
     """
     update the data every 'period' seconds
     """
@@ -96,6 +96,7 @@ executor.submit(get_new_data_every)
 @app.callback(Output("statewise_subplot", "figure"),
             [Input("demo-dropdown", "value"),
             Input("type-dropdown", "value")])
+@cache.memoize(timeout=1200)
 def update_subplot(column_name, plot_type):
     # fig = make_subplots(rows=3, cols=1, shared_xaxes=True)
     if plot_type == "cm":
@@ -117,7 +118,7 @@ def update_subplot(column_name, plot_type):
 
 @app.callback(Output("all_state_subplot", "figure"),
         [Input("all_state_subplot_scale", "value")])
-@lru_cache(maxsize=32)
+@cache.memoize(timeout=1200)
 def update_state_subplot(graph_scale):
     state_columns = state_column_codes
     fig = make_subplots(rows=10, cols=4, 
@@ -144,6 +145,7 @@ def update_state_subplot(graph_scale):
 [Input("country_drop_down", "value"),
 Input("world_plot_time", "value"),
 Input("world_plot_scale", "value")])
+@cache.memoize(timeout=1200)
 def update_world_plot(country_list, time_from, scale_type):
     idx = -1 * time_from
     traces = []
@@ -182,6 +184,7 @@ def update_world_plot(country_list, time_from, scale_type):
 @app.callback(Output("top_6_subplot", "figure"),
             [Input("top_6_tab", "value")])
 @lru_cache(maxsize=32)
+@cache.memoize(timeout=1200)
 def update_top_6_subplot(plot_type):
     fig = make_subplots(rows=2, cols=3, 
                 subplot_titles=(country_1['country'][0],
@@ -262,30 +265,36 @@ def update_total_small_plot(graph_scale):
 
 @app.callback(Output("lg_item1_card1", "children"),
             [Input("index_tabs", "value")])
+@cache.memoize(timeout=1200)
 def update_lg_item1_card1(col_code):
     return f"Confirmed: {countrywise_total['confirmed'][countrywise_total['code'] == col_code].iloc[0]:,d}"
 
 @app.callback(Output("lg_item2_card1", "children"),
             [Input("index_tabs", "value")])
+@cache.memoize(timeout=1200)
 def update_lg_item1_card1(col_code):
     return f"Recovered: {countrywise_total['recovered'][countrywise_total['code'] == col_code].iloc[0]:,d}"
 
 @app.callback(Output("lg_item3_card1", "children"),
             [Input("index_tabs", "value")])
+@cache.memoize(timeout=1200)
 def update_lg_item1_card1(col_code):
     return f"Deaths: {countrywise_total['deaths'][countrywise_total['code'] == col_code].iloc[0]:,d}"
 
 @app.callback(Output("lg_item1_card2", "children"),
             [Input("index_tabs", "value")])
+@cache.memoize(timeout=1200)
 def update_lg_item1_card1(col_code):
     return f"Active: {countrywise_total['active'][countrywise_total['code'] == col_code].iloc[0]:,d}"
 
 @app.callback(Output("lg_item2_card2", "children"),
             [Input("index_tabs", "value")])
+@cache.memoize(timeout=1200)
 def update_lg_item1_card1(col_code):
     return f"Cases Today: {countrywise_total['cases_today'][countrywise_total['code'] == col_code].iloc[0]:,d}"
 
 @app.callback(Output("lg_item3_card2", "children"),
             [Input("index_tabs", "value")])
+@cache.memoize(timeout=1200)
 def update_lg_item1_card1(col_code):
     return f"Deaths Today: {countrywise_total['deaths_today'][countrywise_total['code'] == col_code].iloc[0]:,d}"

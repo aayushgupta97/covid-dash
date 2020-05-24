@@ -4,7 +4,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
-
+import os
 
 from app import app
 from layouts import layout_india, layout_world, navbar, index
@@ -29,4 +29,5 @@ def display_page(pathname):
 
 if __name__ == '__main__':
     # app.run_server(debug=False, port=8080)
+    os.makedirs('cache', exist_ok=True)
     server.run(port=8080)
