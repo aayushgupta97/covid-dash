@@ -35,15 +35,17 @@ def make_raw_gender_age_data_csv():
     r2 = requests.get("https://api.covid19india.org/raw_data2.json").json()
     r3 = requests.get("https://api.covid19india.org/raw_data3.json").json()
     r4 = requests.get("https://api.covid19india.org/raw_data4.json").json()
+    r5 = requests.get("https://api.covid19india.org/raw_data5.json").json()
 
 
     df1 = pd.DataFrame(r1['raw_data'])[['gender', 'agebracket']]
     df2 = pd.DataFrame(r2['raw_data'])[['gender', 'agebracket']]
     df3 = pd.DataFrame(r3['raw_data'])[['gender', 'agebracket']]
     df4 = pd.DataFrame(r4['raw_data'])[['gender', 'agebracket']]
+    df5 = pd.DataFrame(r5['raw_data'])[['gender', 'agebracket']]
 
 
-    raw_df = pd.concat([df1,df2,df3, df4])
+    raw_df = pd.concat([df1,df2,df3, df4, df5])
     raw_df = raw_df.rename(columns={"agebracket": "age"})
     raw_df.to_csv("data/covid_raw_gender_age_full.csv", index=False)
 
