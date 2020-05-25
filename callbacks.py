@@ -7,8 +7,9 @@ from src.utils import *
 from functools import lru_cache
 from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor
 import time
-### Read Data
 
+FIRST_RUN = True
+### Read Data
 ## India
 # confirmed_daily = pd.read_csv("data/daily/confirmed.csv")
 # confirmed_cm = pd.read_csv("data/cumulative/confirmed.csv")
@@ -44,12 +45,14 @@ def get_new_data():
     """
     updates the global_timeseries data.
     """
-    global global_timeseries, countrywise_total, confirmed_daily, confirmed_cm,\
+    global FIRST_RUN ,global_timeseries, countrywise_total, confirmed_daily, confirmed_cm,\
     deceased_daily, deceased_cm, recovered_daily, recovered_cm, country_1,\
     country_2, country_3, country_4, country_5, country_6, top_6_list,\
     global_code_color, global_with_color, df_index_small_plot
     
-    execute_all()
+    ## Will not collect data on initial app run
+    if not FIRST_RUN:
+        execute_all()
 
     confirmed_daily = pd.read_csv("data/daily/confirmed.csv")
     confirmed_cm = pd.read_csv("data/cumulative/confirmed.csv")
@@ -75,6 +78,7 @@ def get_new_data():
     global_with_color = global_timeseries.copy()
     global_with_color['color'] = global_with_color['countrycode'].map(global_code_color)
     df_index_small_plot = global_timeseries.groupby(['date']).sum().reset_index()
+    FIRST_RUN = False
     
 
 def get_new_data_every(period=3600):

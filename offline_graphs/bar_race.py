@@ -38,7 +38,7 @@ global_with_color['color'] = global_with_color['countrycode'].map(global_code_co
 def make_bar_chart(dataset, col_name, frame_rate = 1):
     list_of_frames = []
     for date in list_of_dates:
-        pdata = get_top_10(dataset, date)
+        pdata = get_top_10(dataset, date, col_name)
         list_of_frames.append(go.Frame(data = [go.Bar(x = pdata["countrycode"], y = pdata[col_name],
                                             marker_color = pdata["color"], text = pdata["countrycode"],
                                             hoverinfo = "none",textposition = "outside",
