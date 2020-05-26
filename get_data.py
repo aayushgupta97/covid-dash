@@ -133,9 +133,7 @@ def countrywise_total_data():
 
     df_top_6 = df.sort_values('confirmed', ascending=False).iloc[:6]
     country_codes = df_top_6['code'].tolist()
-    print("foo")
     make_top_6_country_data(country_codes)
-    print("bar")
 
     obj = dict(df.sum())
     df = df.append({
@@ -160,8 +158,8 @@ def make_top_6_country_data(country_codes):
     for code in country_codes:
         url = base_url + code
         r = requests.get(url).json()
-        print(r.keys())
-        print(r)
+        # print(r.keys())
+        # print(r)
         df = pd.DataFrame(r['timelineitems'][0]).T
         df = df.reset_index()
         df = df.rename(columns={"index": "date"})
