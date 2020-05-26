@@ -95,6 +95,7 @@ executor.submit(get_new_data_every)
 ### Modify data for index plots
 
 
+###### ***************************************************************** ######
 
 ### India Callbacks
 @app.callback(Output("statewise_subplot", "figure"),
@@ -144,6 +145,8 @@ def update_state_subplot(graph_scale):
        paper_bgcolor='rgba(0,0,0,0)',
     plot_bgcolor='rgba(0,0,0,0)')
     return fig
+
+###### ***************************************************************** ######
 ### World Callback
 @app.callback(Output("main_world_plot", "figure"),
 [Input("country_drop_down", "value"),
@@ -229,7 +232,7 @@ def update_Race_chart(dd_value):
     return fig
 
 
-
+###### ***************************************************************** ######
 ### Index Callback
 @app.callback(Output("total_small_confirmed_plot", "figure"),
 [Input("radio_small_confirmed_plot", "value")])
@@ -267,32 +270,51 @@ def update_total_small_plot(graph_scale):
     }
 
 
-@app.callback(Output("lg_item1_card1", "children"),
-            [Input("index_tabs", "value")])
-def update_lg_item1_card1(col_code):
-    return f"Confirmed: {countrywise_total['confirmed'][countrywise_total['code'] == col_code].iloc[0]:,d}"
 
-@app.callback(Output("lg_item2_card1", "children"),
-            [Input("index_tabs", "value")])
-def update_lg_item1_card1(col_code):
-    return f"Recovered: {countrywise_total['recovered'][countrywise_total['code'] == col_code].iloc[0]:,d}"
 
-@app.callback(Output("lg_item3_card1", "children"),
-            [Input("index_tabs", "value")])
+@app.callback([Output("lg_item1_card1", "children"),
+Output("lg_item2_card1", "children"),
+Output("lg_item3_card1", "children"),
+Output("lg_item1_card2", "children"),
+Output("lg_item2_card2", "children"),
+Output("lg_item3_card2", "children")],
+[Input("index_tabs", "value")])
 def update_lg_item1_card1(col_code):
-    return f"Deaths: {countrywise_total['deaths'][countrywise_total['code'] == col_code].iloc[0]:,d}"
+    return (f"Confirmed: {countrywise_total['confirmed'][countrywise_total['code'] == col_code].iloc[0]:,d}",
+    f"Recovered: {countrywise_total['recovered'][countrywise_total['code'] == col_code].iloc[0]:,d}",
+    f"Deaths: {countrywise_total['deaths'][countrywise_total['code'] == col_code].iloc[0]:,d}",
+    f"Active: {countrywise_total['active'][countrywise_total['code'] == col_code].iloc[0]:,d}",
+    f"Cases Today: {countrywise_total['cases_today'][countrywise_total['code'] == col_code].iloc[0]:,d}",
+    f"Deaths Today: {countrywise_total['deaths_today'][countrywise_total['code'] == col_code].iloc[0]:,d}")
 
-@app.callback(Output("lg_item1_card2", "children"),
-            [Input("index_tabs", "value")])
-def update_lg_item1_card1(col_code):
-    return f"Active: {countrywise_total['active'][countrywise_total['code'] == col_code].iloc[0]:,d}"
 
-@app.callback(Output("lg_item2_card2", "children"),
-            [Input("index_tabs", "value")])
-def update_lg_item1_card1(col_code):
-    return f"Cases Today: {countrywise_total['cases_today'][countrywise_total['code'] == col_code].iloc[0]:,d}"
+# @app.callback(Output("lg_item1_card1", "children"),
+#             [Input("index_tabs", "value")])
+# def update_lg_item1_card1(col_code):
+#     return f"Confirmed: {countrywise_total['confirmed'][countrywise_total['code'] == col_code].iloc[0]:,d}"
 
-@app.callback(Output("lg_item3_card2", "children"),
-            [Input("index_tabs", "value")])
-def update_lg_item1_card1(col_code):
-    return f"Deaths Today: {countrywise_total['deaths_today'][countrywise_total['code'] == col_code].iloc[0]:,d}"
+# @app.callback(Output("lg_item2_card1", "children"),
+#             [Input("index_tabs", "value")])
+# def update_lg_item1_card1(col_code):
+#     return f"Recovered: {countrywise_total['recovered'][countrywise_total['code'] == col_code].iloc[0]:,d}"
+
+# @app.callback(Output("lg_item3_card1", "children"),
+#             [Input("index_tabs", "value")])
+# def update_lg_item1_card1(col_code):
+#     return f"Deaths: {countrywise_total['deaths'][countrywise_total['code'] == col_code].iloc[0]:,d}"
+
+# @app.callback(Output("lg_item1_card2", "children"),
+#             [Input("index_tabs", "value")])
+# def update_lg_item1_card1(col_code):
+#     return f"Active: {countrywise_total['active'][countrywise_total['code'] == col_code].iloc[0]:,d}"
+
+# @app.callback(Output("lg_item2_card2", "children"),
+#             [Input("index_tabs", "value")])
+# def update_lg_item1_card1(col_code):
+#     return f"Cases Today: {countrywise_total['cases_today'][countrywise_total['code'] == col_code].iloc[0]:,d}"
+
+# @app.callback(Output("lg_item3_card2", "children"),
+#             [Input("index_tabs", "value")])
+# def update_lg_item1_card1(col_code):
+#     return f"Deaths Today: {countrywise_total['deaths_today'][countrywise_total['code'] == col_code].iloc[0]:,d}"
+

@@ -29,6 +29,11 @@ countrywise_total = pd.read_csv("data/COVID_countrywise_total_data.csv")
 
 globalstats = pd.read_csv("data/globalstats.csv")
 
+
+
+
+###### ***************************************************************** ######
+
 line_plot_total_cases = html.Div([
         dcc.Graph(id="my-line-plot",
                     figure={
@@ -150,6 +155,10 @@ dbc.Row(
 
 ])   
 
+
+###### ***************************************************************** ######
+###### ***************************************************************** ######
+
 world_plot_scale = dcc.RadioItems(
     id="world_plot_scale",
     options=[
@@ -202,6 +211,9 @@ layout_world = dbc.Container([
         dbc.Col(top_6_subplot)
     ])
 ])
+
+###### ***************************************************************** ######
+###### ***************************************************************** ######
 
 
 card1 = dbc.Card(
@@ -299,22 +311,6 @@ index_tabs = html.Div([
 
 
 
-# bar_chart_race = dbc.Row([
-#         dbc.Col(html.Div(
-#         dcc.Dropdown(
-#             id="race-chart-dropdown",
-#         options=[
-#             {"label": "Confirmed", "value":"confirmed"},
-#             {"label": "Deceased", "value": "deceased"}
-#         ],
-#         value='confirmed'
-#     ),), width=3),
-
-#     dbc.Col(
-#             dcc.Graph(id="race-chart-figure"), width=12
-#     )       
-#      ] )
-
 index = dbc.Container([
 html.Br(), html.Hr(),
 dbc.Row(
@@ -353,6 +349,25 @@ html.Br(), html.Hr(), html.Br(),
 
 
 
+
+
+
+
+# bar_chart_race = dbc.Row([
+#         dbc.Col(html.Div(
+#         dcc.Dropdown(
+#             id="race-chart-dropdown",
+#         options=[
+#             {"label": "Confirmed", "value":"confirmed"},
+#             {"label": "Deceased", "value": "deceased"}
+#         ],
+#         value='confirmed'
+#     ),), width=3),
+
+#     dbc.Col(
+#             dcc.Graph(id="race-chart-figure"), width=12
+#     )       
+#      ] )
 # dbc.Row(dbc.Col(html.Div(
 #         dcc.Dropdown(
 #             id="race-chart-dropdown",
