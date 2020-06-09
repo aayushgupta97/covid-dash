@@ -91,6 +91,8 @@ def world_timeline_data():
     df['date'] = df['date'].astype('datetime64[ns]')
     df = df.sort_values(by=['date'])
     df.rename(columns={"cases": "confirmed", "deaths": "deceased"}, inplace=True)
+    for col in df.columns:
+        df[col] = df[col].apply(lambda x: x if bool(x) else 0)
     df['confirmed'] = df['confirmed'].astype(int)
     df['deceased'] = df['deceased'].astype(int)
     df['recovered'] = df['recovered'].astype(int)
@@ -103,7 +105,12 @@ def countrywise_total_data():
     Data to make a Table with Each countries totals.
     Contains totals upto that day and new cases on that day. 
     """
-    r = requests.get("https://api.thevirustracker.com/free-api?countryTotals=ALL").json()
+    try:
+        r = requests.get("https://api.thevirustracker.com/free-api?countryTotals=ALL").json()
+    except Exception as e:
+        print("An error occurred in countrywise total data")
+        print(str(e))
+        return False
     data_dict = r['countryitems'][0].copy()
     data_dict['stat']
     del data_dict['stat']
@@ -157,7 +164,12 @@ def make_top_6_country_data(country_codes):
     count = 1
     for code in country_codes:
         url = base_url + code
-        r = requests.get(url).json()
+        try:
+            r = requests.get(url).json()
+        except Exception as e:
+            print("Make top 6 data failed. Check TVT API")
+            print(f"An error occurred: {str(e)}")
+            return False
         # print(r.keys())
         # print(r)
         df = pd.DataFrame(r['timelineitems'][0]).T
@@ -178,7 +190,11 @@ def parse_global_stats():
     """
     Daily count and total count stored in df
     """
-    r = requests.get("https://api.thevirustracker.com/free-api?global=stats").json()
+    try:
+        r = requests.get("https://api.thevirustracker.com/free-api?global=stats").json()
+    except Exception as e:
+        print(f"An error occurred: {str(e)}")
+        return False
     del r['results'][0]['source']
     df = pd.DataFrame(r['results'][0], index=[0])
     df.to_csv("data/globalstats.csv", index=False)
