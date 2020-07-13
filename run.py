@@ -30,4 +30,4 @@ def display_page(pathname):
 if __name__ == '__main__':
     # app.run_server(debug=False, port=8080)
     os.makedirs('cache', exist_ok=True)
-    server.run(port=8080)
+    server.run(host=os.environ.get("BACKEND_HOST", "127.0.0.1"), port=8080)
