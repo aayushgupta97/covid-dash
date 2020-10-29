@@ -11,3 +11,4 @@ pandas-datareader==0.8.1
 plotly==4.6.0
 requests==2.23.0
 flask-caching==1.8.0
+
