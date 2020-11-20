@@ -33,7 +33,7 @@ def make_raw_gender_age_data_csv():
     """
     list_of_dataframes = list()
     url = lambda x: f"https://api.covid19india.org/raw_data{x}.json"
-    for i in range(1, 19):
+    for i in range(1, 20):
         r = requests.get(url(i)).json()
         print(f"GET: {url(i)}")
         df = pd.DataFrame(r['raw_data'])[['gender', 'agebracket']]
